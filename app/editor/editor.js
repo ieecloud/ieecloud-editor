@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directive'])
+angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directive', 'ui.router'])
 
 .config(['$stateProvider', function($stateProvider) {
    $stateProvider.state( 'editor', {
