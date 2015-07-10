@@ -1,0 +1,17 @@
+{
+  "name": "ieecloud-editor",
+  "description": "Ieecloud Editor",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ieecloud/ieecloud-editor",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.0",
+    "bootstrap": "~v3.3.5",
+    "angular-ui-router": "~0.2",
+    "angular-route": "~1.4.0",
+    "angular-loader": "~1.4.0",
+    "angular-mocks": "~1.4.0",
+    "html5-boilerplate": "~5.2.0"
+  }
+}
