@@ -18,10 +18,10 @@ describe('ieecloud-editor', function() {
     });
 
 
-    it('should render editor when user navigates to /editor', function() {
-      expect(element.all(by.css('[ui-view] p')).first().getText()).
-        toMatch(/partial for editor/);
-    });
+//    it('should render editor when user navigates to /editor', function() {
+//      expect(element.all(by.css('[ui-view] p')).first().getText()).
+//        toMatch(/partial for editor/);
+//    });
 
   });
 });
