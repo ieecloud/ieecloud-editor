@@ -4,6 +4,7 @@
 angular.module('ieecloud-editor', [
   'ui.router',
   'ieecloud-editor.viewer.viewer-directive',
+  'ieecloud-editor.console.console-directive',
   'ieecloud-editor.editor'
 
 

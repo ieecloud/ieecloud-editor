@@ -26,7 +26,7 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<!-- Fixed navbar -->
+ Fixed navbar
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -51,10 +51,7 @@
     </div>
 </nav>
 
-<div class="container">
-    <div ui-view="main"></div>
-</div>
-
+<div class="container-fluid" id="content" ui-view="main"></div>
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
@@ -62,8 +59,10 @@
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/ieecloud-viewer.js/bin/ieecloud-viewer.js-0.0.0.min.js"></script>
+<script src="components/console/jquery/jquery.console.js"></script>
 <script src="app.js"></script>
 <script src="editor/editor.js"></script>
 <script src="components/viewer/viewer-directive.js"></script>
+<script src="components/console/console-directive.js"></script>
 </body>
 </html>

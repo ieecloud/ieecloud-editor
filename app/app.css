@@ -28,3 +28,122 @@
   content: "";
   padding: 0;
 }
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+
+.container .text-muted {
+  //margin: 20px 0;
+}
+
+code {
+  font-size: 80%;
+}
+
+.jumbotron {
+  padding: 0;
+}
+
+#content {
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 61px;
+}
+
+
+
+
+
+.viewer-section {
+    position: relative;
+    border: 1px solid #a3a3a3;
+    height: 600px;
+    background-color: #fff;
+     border-radius: 5px;
+}
+
+
+
+
+
+#console {
+    height: 320px;
+    background: #2B2B2B;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: 1px solid #DADADA;
+    word-wrap: break-word;
+}
+
+#console div.jquery-console-welcome {
+    color: #DADADA;
+    font-family: monospace;
+    font-weight: bold;
+    padding: 0.1em;
+}
+
+#console div.jquery-console-inner {
+    width: 680px;
+    height: 300px;
+    margin: 10px 10px;
+    overflow: auto;
+    text-align: left;
+}
+
+#console div.jquery-console-message-completion {
+    color: #5d5d5d;
+    font-family: monospace;
+    padding: 0.1em;
+}
+
+#console div.jquery-console-message-value {
+    color: #CC7832;
+    font-family: monospace;
+    padding: 0.1em;
+}
+
+#console div.jquery-console-message-service-error {
+    color: #CC7832;
+    font-family: monospace;
+    padding: 0.1em;
+}
+
+#console div.jquery-console-prompt-box {
+    color: #DADADA;
+    font-family: monospace;
+}
+
+#console div.jquery-console-focus span.jquery-console-cursor {
+    background: #DADADA;
+    color: #eee;
+    font-weight: bold;
+}
+
+#console div.jquery-console-message-error {
+    color: #BC3F3C;
+    font-weight: bold;
+    font-family: monospace;
+    padding: 0.1em;
+}
+
+#console div.jquery-console-link a {
+    color: #77B767;
+    font-family: monospace;
+    font-weight: bold;
+    padding: 0.1em;
+}
+
+#console div.jquery-console-message-success {
+    color: #77B767;
+    font-family: monospace;
+    padding: 0.1em;
+}
+
+#console span.jquery-console-prompt-label {
+    font-weight: bold;
+}

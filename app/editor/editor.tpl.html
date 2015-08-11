@@ -1,21 +1,13 @@
-<div id="page-content">
-    <div class="content">
-        <section>
-            <div id="container-1">
-                <div>
-                    <div viewer class="viewer-section" id="{{id}}" on-change="dateUpdated(branch)" on-start-render="startRender()"
-                         on-end-render="endRender()">
-                        <button class="btn btn-default tree-control-content" ng-click="isTreeCollapsed = !isTreeCollapsed">
-                            Toggle Tree Test
-                        </button>
-                        <div class="tree-content" collapse="true">
-                            <abn-tree tree-data="my_data" tree-control="my_tree" on-select="my_tree_handler(branch)"
-                                      un-select="unselectBranch(branch)" expand-level="2"></abn-tree>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="row">
+    <div class="col-md-12">
+        <div viewer class="viewer-section" id="{{id}}" on-change="dateUpdated(branch)" on-start-render="startRender()"
+             on-end-render="endRender()">
+        </div>
+    </div>
+</div>
 
-        </section>
+<div class="row">
+    <div class="col-md-12">
+       <div console id="console" class="console"></div>
     </div>
 </div>
