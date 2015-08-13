@@ -4,6 +4,7 @@
 angular.module('ieecloud-editor', [
   'ui.router',
   'ieecloud-editor.viewer.viewer-directive',
+  'ieecloud-editor.console',
   'ieecloud-editor.console.console-directive',
   'ieecloud-editor.editor'
 
@@ -11,7 +12,9 @@ angular.module('ieecloud-editor', [
 ])
 
 
-.config( function ieeEditorConfig ( $stateProvider, $urlRouterProvider) {
+.config( function ieeEditorConfig ( $stateProvider, $urlRouterProvider, consoleApiProvider) {
+
+  consoleApiProvider.setBaseUrl("http://localhost:8000");
 
   $urlRouterProvider.otherwise( '/editor' );
 })
