@@ -4,14 +4,18 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
 
 .directive('viewer', [function() {
      return {
-         restrict: 'A',
+         restrict: 'EA',
+         replace: true,
          scope: {
              onChange: '&',
              onStartRender: '&',
-             onEndRender: '&'
+             onEndRender: '&',
+             model: '=model'
          },
          controller: function ($scope, $element, $attrs) {
-
+             $scope.$watch('model', function(model) {
+                $($element).ieecloudEditor('addModel', model);
+             });
          },
          // responsible for registering DOM listeners as well as updating the DOM
          link: function (scope, element, attrs) {
