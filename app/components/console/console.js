@@ -53,7 +53,7 @@ angular.module('ieecloud-editor.console', [])
 
         makeSnap : function() {
            var snapUrl = null;
-           $.ajax({type: 'POST', async: false, url: '/snap', data: 'id=' + service.session.clientId})
+           $.ajax({type: 'POST', async: false, url: baseUrl + '/snap', data: 'id=' + service.session.clientId})
                .done(function (data) {
 
                    snapUrl = service.getBaseURL() + '?snap=' + data.snap;
@@ -94,9 +94,9 @@ angular.module('ieecloud-editor.console', [])
                   }
 
                   if (!hadError) {
-                      _gaq.push(["_trackEvent", "console", "evaluation", "success"]);
+                      service._gaq.push(["_trackEvent", "console", "evaluation", "success"]);
                   } else {
-                      _gaq.push(["_trackEvent", "console", "evaluation", "error"]);
+                      service._gaq.push(["_trackEvent", "console", "evaluation", "error"]);
                   }
 
                   cb(messages);
