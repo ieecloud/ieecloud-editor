@@ -14,6 +14,8 @@ angular.module('ieecloud-editor.console', [])
 
         session : [],
 
+        _gaq : [],
+
         createNewSession : function(expression, snap) {
            var newSession = [];
            newSession.expression = expression;
@@ -76,6 +78,44 @@ angular.module('ieecloud-editor.console', [])
            return expression;
         },
 
+        execute :function(cb, expression){
+           $.post( baseUrl + '/execute', {id: service.session.clientId, expression: expression})
+              .done(function (data) {
+                  var messages = [];
+                  var hadError = false;
+
+                  for (var i = 0; i < data.logs.length; i++) {
+                      var type = data.logs[i].type == "ERROR" ? "jquery-console-message-error" : "jquery-console-message-success";
+
+                      if (data.logs[i].type == "ERROR") {
+                          hadError = true;
+                      }
+                      messages.push({msg: data.logs[i].message, className: type})
+                  }
+
+                  if (!hadError) {
+                      _gaq.push(["_trackEvent", "console", "evaluation", "success"]);
+                  } else {
+                      _gaq.push(["_trackEvent", "console", "evaluation", "error"]);
+                  }
+
+                  cb(messages);
+                  service.session.requesting = false;
+              })
+              .fail(function (xhr, textStatus, errorThrown) {
+                  cb([
+                      {msg: "Session terminated. Starting new session...", className: "jquery-console-message-service-error"}
+                  ]);
+                  service.restartSession()
+              });
+        },
+
+        complete :function(cb){
+             $.ajax({type: 'GET', async: false, cache: false, url:  baseUrl + '/completions', data: {id: service.session.clientId, expression: prefix}})
+              .done(function (data) {
+                 cb(data)
+              });
+        },
 
         layoutCompletions: function(candidates) {
            var max = 0;

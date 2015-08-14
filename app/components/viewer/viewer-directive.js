@@ -14,7 +14,9 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
          },
          controller: function ($scope, $element, $attrs) {
              $scope.$watch('model', function(model) {
-                $($element).ieecloudEditor('addModel', model);
+              if(model){
+                  $($element).ieecloudEditor('addModel', model);
+              }
              });
          },
          // responsible for registering DOM listeners as well as updating the DOM
