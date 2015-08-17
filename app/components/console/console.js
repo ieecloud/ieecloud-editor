@@ -8,7 +8,7 @@ angular.module('ieecloud-editor.console', [])
       newBaseUrl.substring(0, newBaseUrl.length-1) : newBaseUrl;
   },
 
-  this.$get = [function() {
+  this.$get = ['$injector', function($injector) {
 
       var service = {
 
@@ -100,6 +100,48 @@ angular.module('ieecloud-editor.console', [])
                   }
 
                   cb(messages);
+                  service.session.requesting = false;
+
+                   // render model
+                  service.executeGetModelAsJsonAndRenderModel();
+              })
+              .fail(function (xhr, textStatus, errorThrown) {
+                  cb([
+                      {msg: "Session terminated. Starting new session...", className: "jquery-console-message-service-error"}
+                  ]);
+                  service.restartSession()
+              });
+        },
+
+        executeGetModelAsJsonAndRenderModel :function(){
+          $.post( baseUrl + '/execute', {id: service.session.clientId, expression: 'd.getModelAsJson()'})
+              .done(function (data) {
+
+                 // console.log(data);
+
+                  var messages = [];
+                  var hadError = false;
+
+                  for (var i = 0; i < data.logs.length; i++) {
+                      var type = data.logs[i].type == "ERROR" ? "jquery-console-message-error" : "jquery-console-message-success";
+
+                      if (data.logs[i].type == "ERROR") {
+                          hadError = true;
+                      }
+                      messages.push({msg: data.logs[i].message, className: type})
+                  }
+
+                  if (!hadError) {
+                      var resp = data.logs[0].message;
+                      var json = resp.substring(resp.indexOf('"') + 1,resp.lastIndexOf('"'));
+                      console.log(json);
+
+                      $injector.get('$rootScope').$broadcast('renderModel', JSON.parse(json));
+
+                  } else {
+                      service._gaq.push(["_trackEvent", "console", "evaluation", "error"]);
+                  }
+
                   service.session.requesting = false;
               })
               .fail(function (xhr, textStatus, errorThrown) {

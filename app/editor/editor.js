@@ -17,9 +17,15 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
 
 .controller('EditorCtrl', ['$scope', '$http', function($scope, $http) {
      $scope.loadModel = function () {
-         $http.get('/../../resources/testmodel.json').success(function(data) {
+         $http.get('/../../resources/emptymodel.json').success(function(data) {
                 $scope.model = data;
           });
-     }
+     };
+
+    $scope.$on('renderModel', function (event, data) {
+        console.log("rendering");
+        $scope.model = data;
+        $scope.$apply();
+    });
 
 }]);
