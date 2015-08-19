@@ -10,6 +10,10 @@ angular.module('ieecloud-editor.console', [])
 
   this.$get = ['$injector', function($injector) {
 
+      $injector.get('$rootScope').$on('editMode', function (event, data) {
+          service.restartSession();
+      });
+
       var service = {
 
         session : [],
@@ -48,7 +52,9 @@ angular.module('ieecloud-editor.console', [])
 
         restartSession: function() {
            service.closeSession();
-           service.createNewSession(service.session.expression, service.session.snap)
+           service.createNewSession(service.session.expression, service.session.snap);
+            //TODO: pass params from url and pass cb function for output to console info
+           service.execute(function(data) {}, 'com.ieecloud.fe.drawing.FEDrawing d = new com.ieecloud.fe.drawing.FEDrawing("e6978ee8-f0d0-43d3-8a45-7ff1f5b86cae","1","99c96090-2077-4adb-8922-4d615f2496c7")');
         },
 
         makeSnap : function() {

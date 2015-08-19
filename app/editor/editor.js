@@ -15,11 +15,15 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
     });
 }])
 
-.controller('EditorCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('EditorCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
      $scope.loadModel = function () {
          $http.get('/../../resources/emptymodel.json').success(function(data) {
                 $scope.model = data;
           });
+     };
+
+     $scope.editMode = function () {
+         $rootScope.$broadcast('editMode', 'true');
      };
 
     $scope.$on('renderModel', function (event, data) {
