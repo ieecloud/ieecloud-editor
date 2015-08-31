@@ -4,18 +4,20 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
 
 .config(['$stateProvider', function($stateProvider) {
    $stateProvider.state( 'editor', {
-      url: '/editor',
+      url: '/editor/wsoUuid/:wsoUuid/wsoVersion/:wsoVersion/pad/:pad',
       views: {
         "main": {
           controller: 'EditorCtrl',
           templateUrl: 'editor/editor.tpl.html'
         }
       },
+      params: {wsoUuid: null, wsoVersion: null, pad:null},
       data:{ pageTitle: 'Editor' }
     });
 }])
 
-.controller('EditorCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+.controller('EditorCtrl', ['$scope', '$http', '$rootScope', '$stateParams',  function($scope, $http, $rootScope, $stateParams) {
+     console.log($stateParams)
      $scope.loadModel = function () {
          $http.get('/../../resources/emptymodel.json').success(function(data) {
                 $scope.model = data;
