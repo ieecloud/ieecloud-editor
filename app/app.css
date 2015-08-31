@@ -59,7 +59,7 @@ code {
 .viewer-section {
     position: relative;
     border: 1px solid #a3a3a3;
-    height: 600px;
+    height: 800px;
     background-color: #fff;
      border-radius: 5px;
 }
@@ -69,11 +69,10 @@ code {
 
 
 #console {
-    height: 320px;
+    height: 800px;
     background: #2B2B2B;
     font-size: 14px;
     font-weight: bold;
-    margin-top: 5px;
     border-radius: 5px;
     -moz-border-radius: 5px;
     border: 1px solid #DADADA;
