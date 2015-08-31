@@ -19,13 +19,25 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
 .controller('EditorCtrl', ['$scope', '$http', '$rootScope', '$stateParams',  function($scope, $http, $rootScope, $stateParams) {
      console.log($stateParams)
      $scope.loadModel = function () {
-         $http.get('/../../resources/emptymodel.json').success(function(data) {
+         $http.get('/../../resources/testmodel.json').success(function(data) {
                 $scope.model = data;
           });
      };
 
      $scope.editMode = function () {
          $rootScope.$broadcast('editMode', 'true');
+     };
+
+     $scope.addRuler = function () {
+         $rootScope.$broadcast('showRuler', 'true');
+     };
+
+     $scope.showVProtractor = function () {
+         $rootScope.$broadcast('showVProtractor', 'true');
+     };
+
+     $scope.showHProtractor = function () {
+         $rootScope.$broadcast('showHProtractor', 'true');
      };
 
     $scope.$on('renderModel', function (event, data) {

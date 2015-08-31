@@ -18,6 +18,18 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
                   $($element).ieecloudEditor('addModel', model);
               }
              });
+
+             $scope.$on('showRuler', function (data) {
+                 $($element).ieecloudEditor('showRuler', data);
+             });
+
+             $scope.$on('showVProtractor', function (data) {
+                 $($element).ieecloudEditor('showVProtractor', data);
+             });
+
+              $scope.$on('showHProtractor', function (data) {
+                 $($element).ieecloudEditor('showHProtractor', data);
+             });
          },
          // responsible for registering DOM listeners as well as updating the DOM
          link: function (scope, element, attrs) {
