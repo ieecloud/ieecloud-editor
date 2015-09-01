@@ -15,7 +15,7 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
          controller: function ($scope, $element, $attrs) {
              $scope.$watch('model', function(model) {
               if(model){
-                  $($element).ieecloudEditor('addModel', model);
+                  $($element).ieecloudEditor('reloadModel', model);
               }
              });
 
