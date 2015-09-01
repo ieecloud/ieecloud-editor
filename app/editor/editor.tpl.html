@@ -1,21 +1,41 @@
-<div class="row">
-    <div class="col-md-12">
-        <div class="well">
-            <button type="button" class="btn btn-primary" ng-click="loadModel()">Model</button>
-            <button type="button" class="btn btn-primary" ng-click="editMode()">Edit Mode</button>
-            <button type="button" class="btn btn-primary" ng-click="addRuler()">Ruler</button>
-            <button type="button" class="btn btn-primary" ng-click="showVProtractor()">Protractor V</button>
-            <button type="button" class="btn btn-primary" ng-click="showHProtractor()">Protractor H</button>
-        </div>
-    </div>
-</div>
-<div class="row">
+<div class="row" style="margin-top: 15px;">
     <div class="col-md-9">
-        <div viewer model="model" class="viewer-section" id="{{id}}" on-change="dateUpdated(branch)" on-start-render="startRender()"
-             on-end-render="endRender()">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background-color:transparent;">
+                <button type="button" class="btn btn-primary btn-sm" ng-click="loadModel()">Model</button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="editMode()">Edit Mode</button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="addRuler()">Ruler</button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="showVProtractor()">Protractor V</button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="showHProtractor()">Protractor H</button>
+            </div>
+            <div class="panel-body padding-none">
+                <div viewer model="model" class="viewer-section" id="{{id}}" on-change="dateUpdated(branch)"
+                     on-start-render="startRender()"
+                     on-end-render="endRender()">
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-md-3">
-        <div console id="console" class="console"></div>
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background-color:transparent">Console</div>
+            <div class="panel-body console-body">
+                <div console id="console" class="console"></div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background-color:transparent"><input class="form-control" placeholder="Enter cmd name" ng-model="searchText"></div>
+            <div class="panel-body command-body">
+
+                <div class="list-group command-group">
+                    <a ng-repeat="cmd in commands | filter:searchText"
+                       class="list-group-item" ng-click="runCmd(cmd.id)" ng-class="{'active':selCmdId===cmd.id}">
+                        {{cmd.name}}
+                        <span class="badge"><i class="fa fa-play"></i></span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -18,6 +18,9 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
 
 .controller('EditorCtrl', ['$scope', '$http', '$rootScope', '$stateParams',  function($scope, $http, $rootScope, $stateParams) {
      console.log($stateParams)
+
+
+     $scope.selCmdId = 0;
      $scope.loadModel = function () {
          $http.get('/../../resources/testmodel.json').success(function(data) {
                 $scope.model = data;
@@ -45,5 +48,26 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
         $scope.model = data;
         $scope.$apply();
     });
+
+    $scope.runCmd = function(id){
+       $scope.selCmdId = id;
+    }
+
+    $scope.commands = [
+      {id: 1, name:'box', description:'box', iconClazz:"fa-arrow-circle-down"},
+      {id: 2,name:'circle', description:'box', iconClazz: 'fa-arrow-down'},
+      {id: 3,name:'line', description:'box' ,  iconClazz: 'fa-hand-o-right'},
+      {id: 4,name:'box', description:'box', iconClazz: 'fa-hand-o-left'},
+      {id: 5,name:'circle', description:'box', iconClazz:"fa-arrow-circle-down"},
+      {id: 6,name:'line', description:'box', iconClazz:"fa-arrow-circle-down"},
+      {id: 7,name:'box', description:'box', iconClazz:"fa-arrow-circle-down"},
+      {id: 8,name:'circle', description:'box', iconClazz:"fa-arrow-circle-down"},
+      {id: 9,name:'line', description:'box', iconClazz:"fa-arrow-circle-down"},
+      {id: 10,name:'box', description:'box', iconClazz:"fa-arrow-circle-down"},
+      {id: 11,name:'circle', description:'box', iconClazz:"fa-arrow-circle-down"},
+      {id: 12,name:'line', description:'box', iconClazz:"fa-arrow-circle-down"},
+      {id: 13,name:'circle', description:'box', iconClazz:"fa-arrow-circle-down"},
+      {id: 14,name:'circle', description:'box', iconClazz:"fa-arrow-circle-down"}
+    ]
 
 }]);
