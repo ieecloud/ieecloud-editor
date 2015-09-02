@@ -49,9 +49,17 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
         $scope.$apply();
     });
 
+    $scope.$on('renderCommands', function (event, data) {
+        console.log("rendering commands");
+        console.log(data);
+        $scope.commands = JSON.parse(data);
+        $scope.$apply();
+    });
+
     $scope.runCmd = function(id){
        $scope.selCmdId = id;
-    }
+        console.log("cmd:" + id);
+    };
 
     $scope.commands = [
       {id: 1, name:'box', description:'box', iconClazz:"fa-arrow-circle-down"},
