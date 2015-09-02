@@ -24,14 +24,22 @@
             </div>
         </div>
         <div class="panel panel-default">
-            <div class="panel-heading" style="background-color:transparent"><input class="form-control" placeholder="Enter cmd name" ng-model="searchText"></div>
+            <div class="panel-heading" style="background-color:transparent"><input class="form-control"
+                                                                                   placeholder="Enter cmd name"
+                                                                                   ng-model="searchText"></div>
             <div class="panel-body command-body">
 
                 <div class="list-group command-group">
                     <a ng-repeat="cmd in commands | querySearch:searchText"
                        class="list-group-item" ng-click="runCmd(cmd.id)" ng-class="{'active':selCmdId===cmd.id}">
-                        {{cmd.name}}
-                        <span class="badge"><i class="fa fa-play"></i></span>
+                        <div class="pull-left">
+                            <span>
+                             <i class="fa fa-lg {{cmd.iconClazz}}"></i>
+                            </span>
+                        </div>
+                        <div class="cmd-name">{{cmd.name}} <i class="fa fa-play run"></i></div>
+                        <!--<span class="badge"><i class="fa fa-play"></i></span>-->
+
                     </a>
 
                 </div>

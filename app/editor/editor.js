@@ -61,13 +61,13 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
       {id: 5,name:'circle', description:'box', iconClazz:"fa-arrow-circle-down"},
       {id: 6,name:'line', description:'box', iconClazz:"fa-arrow-circle-down"},
       {id: 7,name:'box', description:'box', iconClazz:"fa-arrow-circle-down"},
-      {id: 8,name:'circle', description:'box', iconClazz:"fa-arrow-circle-down"},
-      {id: 9,name:'line', description:'box', iconClazz:"fa-arrow-circle-down"},
+      {id: 8,name:'circle', description:'box', iconClazz:"fa-hand-o-up"},
+      {id: 9,name:'line', description:'box', iconClazz:"fa-recycle"},
       {id: 10,name:'box', description:'box', iconClazz:"fa-arrow-circle-down"},
       {id: 11,name:'circle', description:'box', iconClazz:"fa-arrow-circle-down"},
-      {id: 12,name:'line', description:'box', iconClazz:"fa-arrow-circle-down"},
+      {id: 12,name:'line', description:'box', iconClazz:"fa-recycle"},
       {id: 13,name:'circle', description:'box', iconClazz:"fa-arrow-circle-down"},
-      {id: 14,name:'circle', description:'box', iconClazz:"fa-arrow-circle-down"}
+      {id: 14,name:'circle', description:'box', iconClazz:"fa-recycle"}
     ]
 
 }]);

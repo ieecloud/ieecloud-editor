@@ -178,10 +178,9 @@ code {
    margin-left: -1px;
 }
 
-.command-group .badge{
-       font-size: 17px;
-       color: green;
-       background-color: white;
+.command-group .run{
+   font-size: 1.4em;
+   float: right;
 }
 
 .command-group .list-group-item.active > .badge{
@@ -191,3 +190,15 @@ code {
 .list-group-item:last-child {
   border-bottom-width: 0px;
 }
+
+.list-group-item .cmd-name {
+    padding-left: 10px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+
