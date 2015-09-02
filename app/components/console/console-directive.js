@@ -89,5 +89,12 @@ angular.module('ieecloud-editor.console.console-directive', [])
                       return true;
                   }
               });
+
+
+              scope.$on('editor.cmd', function (event, cmd) {
+                if(cmd){
+                   controller.promptText(cmd.name);
+                }
+              });
          }};
   }]);

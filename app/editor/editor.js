@@ -56,9 +56,9 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
         $scope.$apply();
     });
 
-    $scope.runCmd = function(id){
-       $scope.selCmdId = id;
-        console.log("cmd:" + id);
+    $scope.runCmd = function(cmd){
+       $scope.selCmdId = cmd.id;
+       $rootScope.$broadcast('editor.cmd', cmd);
     };
 
     $scope.commands = [
