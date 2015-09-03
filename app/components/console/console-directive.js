@@ -93,7 +93,8 @@ angular.module('ieecloud-editor.console.console-directive', [])
 
               scope.$on('editor.cmd', function (event, cmd) {
                 if(cmd){
-                   controller.promptText(cmd.name);
+                    var cmdNameStart = 'd.' + cmd.name.substring(0, cmd.name.indexOf('(') + 1);
+                   controller.promptText(cmdNameStart);
                 }
               });
          }};
