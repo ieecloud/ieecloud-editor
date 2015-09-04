@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('ieecloud-editor', [
   'ui.router',
+  'ui.tree',
   'ieecloud-editor.filters',
   'ieecloud-editor.viewer.viewer-directive',
   'ieecloud-editor.console',
