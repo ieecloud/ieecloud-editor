@@ -1,0 +1,14 @@
+[
+  {
+    "id": "COORDINATE",
+    "name": "coordinate",
+    "description": "Point in 3d",
+    "tools": ["ruler","protractor","nearest_point"]
+  },
+  {
+    "id": "DOUBLE",
+    "name": "double",
+    "description": "Dimension",
+    "tools": ["ruler", "dialog_double"]
+  }
+]

@@ -61,23 +61,9 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
        $rootScope.$broadcast('editor.cmd', cmd);
     };
 
-    $scope.commands = [
-      {id: 1, name:'box', description:'box', iconClazz:"fa-arrow-circle-down"},
-      {id: 2,name:'circle', description:'box', iconClazz: 'fa-arrow-down'},
-      {id: 3,name:'line', description:'box' ,  iconClazz: 'fa-hand-o-right'},
-      {id: 4,name:'box', description:'box', iconClazz: 'fa-hand-o-left'},
-      {id: 5,name:'circle', description:'box', iconClazz:"fa-arrow-circle-down"},
-      {id: 6,name:'line', description:'box', iconClazz:"fa-arrow-circle-down"},
-      {id: 7,name:'box', description:'box', iconClazz:"fa-arrow-circle-down"},
-      {id: 8,name:'circle', description:'box', iconClazz:"fa-hand-o-up"},
-      {id: 9,name:'line', description:'box', iconClazz:"fa-recycle"},
-      {id: 10,name:'box', description:'box', iconClazz:"fa-arrow-circle-down"},
-      {id: 11,name:'circle', description:'box', iconClazz:"fa-arrow-circle-down"},
-      {id: 12,name:'line', description:'box', iconClazz:"fa-recycle"},
-      {id: 13,name:'circle', description:'box', iconClazz:"fa-arrow-circle-down"},
-      {id: 14,name:'circle', description:'box', iconClazz:"fa-recycle"}
-    ];
-
+    $http.get('/../../resources/drawing_cmd.json.json').success(function(data) {
+        $scope.commands = data;
+    });
 
    $scope.treeData = [{
           'id': 1,

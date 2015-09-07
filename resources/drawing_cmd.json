@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "box",
+    "description": "Draw box with current cursor and dimensions dx dy dz",
+    "iconClazz": "fa-cube",
+    "action": {
+      "type": "drawing",
+      "name": "editorAPI",
+      "method": "box",
+      "params": [
+        {"cursor": "COORDINATE"},
+        {"coordinate": "COORDINATE"}
+      ]
+    },
+    "preview": "/preview/box.js"
+  },
+  {
+    "id": 2,
+    "name": "circle",
+    "description": "circle",
+    "iconClazz": "fa-circle-o",
+    "action": {
+      "type": "drawing",
+      "name": "editorAPI",
+      "method": "circle",
+      "params": [
+        {"cursor": "COORDINATE"},
+        {"coordinate": "DOUBLE"}
+      ]
+    },
+    "preview": "/preview/circle.js"
+  },
+  {
+    "id": 3,
+    "name": "line",
+    "description": "circle",
+    "iconClazz": "fa-arrows-h",
+    "action": {
+      "type": "drawing",
+      "name": "editorAPI",
+      "method": "circle",
+      "params": [
+        {"cursor": "COORDINATE"},
+        {"coordinate": "COORDINATE"}
+      ]
+    },
+    "preview": "/preview/line.js"
+  }
+]
