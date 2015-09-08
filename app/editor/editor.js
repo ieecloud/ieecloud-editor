@@ -61,81 +61,61 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
        $rootScope.$broadcast('editor.cmd', cmd);
     };
 
-    $http.get('/../../resources/drawing_cmd.json.json').success(function(data) {
+    $http.get('/../../resources/drawing_cmd.json').success(function(data) {
         $scope.commands = data;
     });
 
-   $scope.treeData = [{
-          'id': 1,
-          'title': 'node1',
-          'nodes': [
-            {
-              'id': 11,
-              'title': 'node1.1',
-              'nodes': [
-                {
-                  'id': 111,
-                  'title': 'node1.1.1',
-                  'nodes': []
-                }
-              ]
-            },
-            {
-              'id': 12,
-              'title': 'node1.2',
-              'nodes': []
-            }
-          ]
-        }, {
-          'id': 2,
-          'title': 'node2',
-          'nodrop': true, // An arbitrary property to check in custom template for nodrop-enabled
-          'nodes': [
-            {
-              'id': 21,
-              'title': 'node2.1',
-              'nodes': []
-            },
-            {
-              'id': 22,
-              'title': 'node2.2',
-              'nodes': []
-            }
-          ]
-        }, {
-          'id': 3,
-          'title': 'node3',
-          'nodes': [
-            {
-              'id': 31,
-              'title': 'node3.1',
-              'nodes': []
-            }
-          ]
-      }];
+    $scope.onTreeLoad = function(tree){
+       $scope.treeData = tree.children;
+    };
 
 
-      $scope.remove = function (scope) {
-        scope.remove();
-      };
+    $scope.remove = function (scope, $event) {
+       $event.stopPropagation();
+       scope.remove();
+    };
 
-      $scope.newSubItem = function (scope) {
+      $scope.newSubItem = function (scope, $event) {
+        $event.stopPropagation();
         var nodeData = scope.$modelValue;
-        nodeData.nodes.push({
-          id: nodeData.id * 10 + nodeData.nodes.length,
-          title: nodeData.title + '.' + (nodeData.nodes.length + 1),
-          nodes: []
+        nodeData.children.push({
+          id: nodeData.id * 10 + nodeData.children.length,
+          name: nodeData.name + '.' + (nodeData.children.length + 1),
+          children: []
         });
       };
 
+
+      function findChildren(node, text, predicate) {
+        var found = false;
+        if (node.children && node.children.length) {
+          var result = _.map(node.children, function (child) {
+            return findChildren(child, text, predicate);
+          });
+          found = _.find(result, Boolean);
+        }
+        // leaf
+        if (node.children && node.children.length == 0 || !node.children) {
+          return found || predicate(node, text);
+        }
+        return found;
+      }
+
       $scope.visible = function (item) {
-        return !($scope.query && $scope.query.length > 0
-        && item.title.indexOf($scope.query) == -1);
-
+        return findChildren(item, $scope.query || '', function (node, text) {
+          return !(text && text.length > 0 && node.name.toLowerCase().indexOf(text.toLowerCase()) === -1)
+        });
       };
 
-      $scope.findNodes = function () {
+      $scope.selectNode = function (node, scope) {
 
+        if (node.children && node.children.length > 0) {
+           scope.toggle();
+           return;
+        }
+
+//        TODO : select in viewer
       };
+
 
 }]);

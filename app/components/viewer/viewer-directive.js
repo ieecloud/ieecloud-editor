@@ -8,6 +8,7 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
          replace: true,
          scope: {
              onChange: '&',
+             onTreeLoad: '&',
              onStartRender: '&',
              onEndRender: '&',
              model: '=model'
@@ -56,6 +57,9 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
                  },
                  onLoad: function () {
 
+                 },
+                 onTreeLoad: function (tree) {
+                     scope.onTreeLoad({tree: tree});
                  }
              });
 
