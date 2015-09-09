@@ -107,25 +107,92 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
         });
       };
 
+      var traverseTree = function (node, callback) {
+         callback(node);
+        _.map(node.children, function (child) {
+              traverseTree(child, callback);
+         });
+      };
 
+
+      var removeNode = function (node) {
+        _.remove($scope.selectedNodes, function(n) {
+             return n.uniqueId === node.uniqueId;
+        });
+      };
 
       $scope.selectNode = function (node, scope) {
 
-        if (node.children && node.children.length > 0) {
-           scope.toggle();
-           return;
-        }
-         $log.info("You selected: " , node.uuid)
+         $log.info("You selected: " , node);
 
          if(_.includes($scope.selectedNodes, node)){
-            _.remove($scope.selectedNodes, function(n) {
-                 return n.uniqueId === node.uniqueId;
-            });
+            removeNode(node);
+            traverseTree(node, function (child) {
+               if(child.children && child.children.length === 0){
+                  removeNode(child);
+               }
+             });
+
+              if(node.children && node.children.length === 0){
+                  var parentName = node.parentName;
+                  var tree = {children: $scope.treeData};
+                  var parentNode;
+                  traverseTree(tree, function (child) {
+                     if(child.children && child.children.length > 0 && child.name === parentName){
+                         parentNode = child;
+                     }
+                  });
+
+                  if( _.includes($scope.selectedNodes, parentNode)){
+                      removeNode(parentNode);
+                      $rootScope.$broadcast('unSelectObject', {node:parentNode});
+                  }
+
+                  traverseTree(parentNode, function (child) {
+                       if( _.includes($scope.selectedNodes, child)){
+                           $rootScope.$broadcast('selectObject', {node:child});
+                       }
+                 });
+              }
+
              $rootScope.$broadcast('unSelectObject', {node:node});
-         }else{
-             $scope.selectedNodes.push(node);
-             $rootScope.$broadcast('selectObject', {node:node});
+             return;
          }
+
+         $scope.selectedNodes.push(node);
+         //leaf
+         if(node.children && node.children.length === 0){
+             var parentName = node.parentName;
+             var tree = {children: $scope.treeData};
+             var parentNode;
+             traverseTree(tree, function (child) {
+                if(child.children && child.children.length > 0 && child.name === parentName){
+                    parentNode = child;
+                }
+             });
+             var include = true;
+             traverseTree(parentNode, function (child) {
+                   if(child.children && child.children.length === 0){
+                       var includeOld = include;
+                       include =  _.includes($scope.selectedNodes, child) && includeOld;
+                   }
+             });
+
+             if(include){
+                $scope.selectedNodes.push(parentNode);
+                $rootScope.$broadcast('selectObject', {node:parentNode});
+                return;
+             }
+         }
+
+
+         traverseTree(node, function (child) {
+           if(child.children && child.children.length === 0){
+              $scope.selectedNodes.push(child);
+           }
+         });
+         $rootScope.$broadcast('selectObject', {node:node});
+
       };
 
       $scope.isInclude = function (node){

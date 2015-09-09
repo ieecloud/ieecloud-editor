@@ -2,7 +2,7 @@
 <script type="text/ng-template" id="nodes_renderer.html">
     <div ui-tree-handle class="tree-node tree-node-content" ng-click="selectNode(node, this)"
          ng-class="{'active' : isInclude(node)}">
-        <div class="pull-left" data-nodrag  ng-if="node.children && node.children.length > 0">
+        <div class="pull-left" data-nodrag  ng-click="toggle(this)" ng-if="node.children && node.children.length > 0">
       <i class="fa"
             ng-class="{'fa-chevron-right': collapsed, 'fa-chevron-down': !collapsed}">
       </i>
