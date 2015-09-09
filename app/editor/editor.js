@@ -16,7 +16,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
     });
 }])
 
-.controller('EditorCtrl', ['$scope', '$http', '$rootScope', '$stateParams',  function($scope, $http, $rootScope, $stateParams) {
+.controller('EditorCtrl', ['$scope', '$http', '$rootScope', '$stateParams', '$log',  function($scope, $http, $rootScope, $stateParams, $log) {
      console.log($stateParams)
 
 
@@ -107,15 +107,35 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
         });
       };
 
+
+
       $scope.selectNode = function (node, scope) {
 
         if (node.children && node.children.length > 0) {
            scope.toggle();
            return;
         }
+         $log.info("You selected: " , node.uuid)
 
-//        TODO : select in viewer
+         if(_.includes($scope.selectedNodes, node)){
+            _.remove($scope.selectedNodes, function(n) {
+                 return n.uniqueId === node.uniqueId;
+            });
+             $rootScope.$broadcast('unSelectObject', {node:node});
+         }else{
+             $scope.selectedNodes.push(node);
+             $rootScope.$broadcast('selectObject', {node:node});
+         }
       };
 
+      $scope.isInclude = function (node){
+         return _.includes($scope.selectedNodes, node);
+      };
+
+      var init = function(){
+          $scope.selectedNodes = []
+      };
+
+      init();
 
 }]);

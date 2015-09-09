@@ -259,6 +259,22 @@ code {
     margin-right: 10px;
 }
 
+
+.tree-node-content.active, .tree-node-content.active:hover{
+    z-index: 2;
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+.tree-node-content:hover {
+      background-color: #f5f5f5;
+      text-decoration: none;
+      border-color: #dce2e8;
+}
+
+
+
 .angular-ui-tree-handle:hover {
 }
 

@@ -20,17 +20,26 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
               }
              });
 
-             $scope.$on('showRuler', function (data) {
-                 $($element).ieecloudEditor('showRuler', data);
+             $scope.$on('showRuler', function (event) {
+                 $($element).ieecloudEditor('showRuler', event);
              });
 
-             $scope.$on('showVProtractor', function (data) {
-                 $($element).ieecloudEditor('showVProtractor', data);
+             $scope.$on('showVProtractor', function (event) {
+                 $($element).ieecloudEditor('showVProtractor', event);
              });
 
-              $scope.$on('showHProtractor', function (data) {
-                 $($element).ieecloudEditor('showHProtractor', data);
+              $scope.$on('showHProtractor', function (event) {
+                 $($element).ieecloudEditor('showHProtractor', event);
              });
+
+             $scope.$on('selectObject', function (event, args) {
+                 $($element).ieecloudEditor('selectObject', args.node);
+             });
+
+             $scope.$on('unSelectObject', function (event, args) {
+                 $($element).ieecloudEditor('unSelectObject', args.node);
+             });
+
          },
          // responsible for registering DOM listeners as well as updating the DOM
          link: function (scope, element, attrs) {
@@ -45,9 +54,7 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
                  resultTextColor:"white",
                  id: attrs.id,
                  onChange: function (branch) {
-                     scope.$apply(function () {
-                         scope.onChange({branch: branch});
-                     });
+                    scope.onChange({branch: branch});
                  },
                  onStartRender: function () {
                      scope.onStartRender();
