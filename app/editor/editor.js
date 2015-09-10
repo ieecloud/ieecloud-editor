@@ -121,6 +121,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
         });
       };
 
+//      TODO refactor
       $scope.selectNode = function (node, scope) {
 
          $log.info("You selected: " , node);
