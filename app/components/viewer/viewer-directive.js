@@ -7,7 +7,7 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
          restrict: 'EA',
          replace: true,
          scope: {
-             onChange: '&',
+             onSelectObject: '&',
              onTreeLoad: '&',
              onStartRender: '&',
              onEndRender: '&',
@@ -45,7 +45,7 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
          link: function (scope, element, attrs) {
              $(element).ieecloudEditor({
                  textureUrl: "",
-                 mode: "viewer",
+                 mode: "editor",
                  resultDigits: 3,
                  drawResults: false,
                  gridVisible: true,
@@ -53,8 +53,8 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
                  backgroundColor:"#aaa",
                  resultTextColor:"white",
                  id: attrs.id,
-                 onChange: function (branch) {
-                    scope.onChange({branch: branch});
+                 onSelectObject: function (node) {
+                    scope.onSelectObject({node: node});
                  },
                  onStartRender: function () {
                      scope.onStartRender();

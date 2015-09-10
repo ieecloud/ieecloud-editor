@@ -200,6 +200,12 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
          return _.includes($scope.selectedNodes, node);
       };
 
+
+      $scope.onSelectNode = function(node){
+           $scope.selectedNodes.push(node);
+      }
+
+
       var init = function(){
           $scope.selectedNodes = []
       };

@@ -51,7 +51,7 @@
                 <button type="button" class="btn btn-primary btn-sm" ng-click="showHProtractor()">Protractor H</button>
             </div>
             <div class="panel-body padding-none">
-                <div viewer model="model" class="viewer-section" id="{{id}}" on-tree-load="onTreeLoad(tree)"
+                <div viewer model="model" class="viewer-section" id="{{id}}" on-tree-load="onTreeLoad(tree)" on-select-object="onSelectNode(node)"
                      on-start-render="startRender()"
                      on-end-render="endRender()">
                 </div>
