@@ -202,7 +202,6 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
 
 
       $scope.onSelectNode = function(node){
-           $scope.selectedNodes.push(node);
       }
 
 
