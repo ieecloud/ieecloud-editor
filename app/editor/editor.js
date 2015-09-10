@@ -115,37 +115,53 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
       };
 
 
-      var removeNode = function (node) {
+      var removeNodeFromSelection = function (node) {
         _.remove($scope.selectedNodes, function(n) {
              return n.uniqueId === node.uniqueId;
         });
       };
 
+      var getParentNode = function (node) {
+           var parentName = node.parentName;
+           var tree = {children: $scope.treeData};
+           var parentNode;
+           traverseTree(tree, function (child) {
+              if(child.children && child.children.length > 0 && child.name === parentName){
+                  parentNode = child;
+              }
+           });
+           return parentNode;
+      };
+
+      var isAllParentChildSelected = function (parentNode) {
+          var include = true;
+          traverseTree(parentNode, function (child) {
+                if(child.children && child.children.length === 0){
+                    var includeOld = include;
+                    include =  _.includes($scope.selectedNodes, child) && includeOld;
+                }
+          });
+          return include;
+      };
+
 //      TODO refactor
-      $scope.selectNode = function (node, scope) {
+      $scope.selectNode = function (node) {
 
          $log.info("You selected: " , node);
 
          if(_.includes($scope.selectedNodes, node)){
-            removeNode(node);
+            removeNodeFromSelection(node);
             traverseTree(node, function (child) {
                if(child.children && child.children.length === 0){
-                  removeNode(child);
+                  removeNodeFromSelection(child);
                }
              });
 
               if(node.children && node.children.length === 0){
-                  var parentName = node.parentName;
-                  var tree = {children: $scope.treeData};
-                  var parentNode;
-                  traverseTree(tree, function (child) {
-                     if(child.children && child.children.length > 0 && child.name === parentName){
-                         parentNode = child;
-                     }
-                  });
+                  var parentNode = getParentNode(node);
 
                   if( _.includes($scope.selectedNodes, parentNode)){
-                      removeNode(parentNode);
+                      removeNodeFromSelection(parentNode);
                       $rootScope.$broadcast('unSelectObject', {node:parentNode});
                   }
 
@@ -163,29 +179,13 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
          $scope.selectedNodes.push(node);
          //leaf
          if(node.children && node.children.length === 0){
-             var parentName = node.parentName;
-             var tree = {children: $scope.treeData};
-             var parentNode;
-             traverseTree(tree, function (child) {
-                if(child.children && child.children.length > 0 && child.name === parentName){
-                    parentNode = child;
-                }
-             });
-             var include = true;
-             traverseTree(parentNode, function (child) {
-                   if(child.children && child.children.length === 0){
-                       var includeOld = include;
-                       include =  _.includes($scope.selectedNodes, child) && includeOld;
-                   }
-             });
-
-             if(include){
+             var parentNode = getParentNode(node);
+             if(isAllParentChildSelected(parentNode)){
                 $scope.selectedNodes.push(parentNode);
                 $rootScope.$broadcast('selectObject', {node:parentNode});
                 return;
              }
          }
-
 
          traverseTree(node, function (child) {
            if(child.children && child.children.length === 0){
@@ -200,8 +200,40 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.viewer.viewer-directi
          return _.includes($scope.selectedNodes, node);
       };
 
+      // fires when user select in viewer
+      $scope.onSelectNode = function(node, select){
+          if(!select){
+             removeNodeFromSelection(node);
+             traverseTree(node, function (child) {
+                if(child.children && child.children.length === 0){
+                   removeNodeFromSelection(child);
+                }
+              });
+              if(node.children && node.children.length === 0){
+                var parentNode = getParentNode(node);
+                if( _.includes($scope.selectedNodes, parentNode)){
+                    removeNodeFromSelection(parentNode);
+                }
+              }
+             $scope.$apply();
+             return;
+          }
 
-      $scope.onSelectNode = function(node){
+           traverseTree(node, function (child) {
+             if(child.children && child.children.length === 0){
+               $scope.selectedNodes.push(child);
+             }
+           });
+
+           if(node.children && node.children.length === 0){
+                var parentNode = getParentNode(node);
+                if(isAllParentChildSelected(parentNode)){
+                  $scope.selectedNodes.push(parentNode);
+                  $scope.$apply();
+                  return;
+                }
+           }
+           $scope.$apply();
       }
 
 

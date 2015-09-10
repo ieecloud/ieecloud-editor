@@ -53,8 +53,8 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
                  backgroundColor:"#aaa",
                  resultTextColor:"white",
                  id: attrs.id,
-                 onSelectObject: function (node) {
-                    scope.onSelectObject({node: node});
+                 onSelectObject: function (node, value) {
+                    scope.onSelectObject({node: node, selected : value});
                  },
                  onStartRender: function () {
                      scope.onStartRender();
