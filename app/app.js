@@ -2,13 +2,16 @@
 
 // Declare app level module which depends on views, and components
 angular.module('ieecloud-editor', [
-  'ui.router',
-  'ui.tree',
   'ieecloud-editor.filters',
   'ieecloud-editor.viewer.viewer-directive',
   'ieecloud-editor.console',
   'ieecloud-editor.console.console-directive',
+
+  'ui.router',
+  'ui.bootstrap',
+  'ui.tree',
   'ieecloud-editor.editor'
+
 
 
 ])
@@ -18,5 +21,18 @@ angular.module('ieecloud-editor', [
 
   consoleApiProvider.setBaseUrl("http://localhost:8000");
 
-  $urlRouterProvider.otherwise( '/editor' );
+
+  $stateProvider.state( 'root', {
+    abstract:true,
+    views: {
+      'main': {
+        templateUrl: 'editor/layout.tpl.html'
+      }
+    },
+    data:{ pageTitle: 'Editor' }
+  });
+
+   $urlRouterProvider.otherwise( '/editor' );
+
 })
+

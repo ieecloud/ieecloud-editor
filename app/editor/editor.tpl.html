@@ -49,6 +49,18 @@
                 <button type="button" class="btn btn-primary btn-sm" ng-click="addRuler()">Ruler</button>
                 <button type="button" class="btn btn-primary btn-sm" ng-click="showVProtractor()">Protractor V</button>
                 <button type="button" class="btn btn-primary btn-sm" ng-click="showHProtractor()">Protractor H</button>
+                <!-- Split button -->
+                <div class="btn-group" dropdown>
+                    <button id="split-button" type="button" class="btn btn-primary btn-sm">Mode</button>
+                    <button type="button" class="btn btn-primary btn-sm" dropdown-toggle>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="split-button">
+                        <li role="menuitem"><a ng-click="setMode()">3d point</a></li>
+                        <li role="menuitem"><a ng-click="setMode()">3d geometry</a></li>
+                        <li role="menuitem"><a ng-click="setMode()">faces and nodes</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="panel-body padding-none">
                 <div viewer model="model" class="viewer-section" id="{{id}}" on-tree-load="onTreeLoad(tree)" on-select-object="onSelectNode(node, selected)"

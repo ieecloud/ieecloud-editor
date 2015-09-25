@@ -1,0 +1,35 @@
+<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_renderer.html">
+    <div ui-tree-handle class="tree-node tree-node-content" ng-click="selectNode(node, this)"
+         ng-class="{'active' : isInclude(node)}">
+        <div class="pull-left" data-nodrag  ng-click="toggle(this)" ng-if="node.children && node.children.length > 0">
+            <i class="fa"
+               ng-class="{'fa-chevron-right': collapsed, 'fa-chevron-down': !collapsed}">
+            </i>
+        </div>
+        <span class="margin-left-5">{{node.name}}</span>
+        <div class="pull-right" data-nodrag ng-click="remove(this, $event)"><i
+                class="fa fa-remove"></i></div>
+        <div class="pull-right" data-nodrag ng-click="newSubItem(this, $event)" style="margin-right: 8px;"><span
+                class="fa fa-plus"></span></div>
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.children" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.children" ui-tree-node ng-include="'nodes_renderer.html'" ng-show="visible(node)">
+        </li>
+    </ol>
+</script>
+
+<div class="panel panel-default">
+    <div class="panel-heading" style="background-color:transparent;">
+        <input class="form-control" placeholder="Enter object name"
+               ng-model="query">
+    </div>
+    <div class="panel-body padding-none tree-body">
+        <div ui-tree id="tree-root" data-drag-enabled="false">
+            <ol ui-tree-nodes="" ng-model="treeData">
+                <li ng-repeat="node in treeData" ui-tree-node ng-include="'nodes_renderer.html'"
+                    ng-show="visible(node)"></li>
+            </ol>
+        </div>
+    </div>
+</div>
