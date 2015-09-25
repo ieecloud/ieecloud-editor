@@ -25,7 +25,7 @@ angular.module('ieecloud-editor', [
   $stateProvider.state( 'root', {
     abstract:true,
     views: {
-      'main': {
+      '@': {
         templateUrl: 'editor/layout.tpl.html'
       }
     },

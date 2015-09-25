@@ -53,7 +53,7 @@
     </div>
 </nav>
 
-<div class="container-fluid" id="content" ui-view="main"></div>
+<div class="container-fluid" id="content" ui-view></div>
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
@@ -69,11 +69,14 @@
 
 
 
-<script src="editor/center/editor.js"></script>
-<script src="editor/right/console-view.js"></script>
+
+
 <script src="app.js"></script>
-<script src="editor/editor.js"></script>
-<script src="editor/left/tree.js"></script>
+<script src="editor/layout.js"></script>
+<script src="editor/left/tree-view.js"></script>
+<script src="editor/center/editor-view.js"></script>
+<script src="editor/right/console-view.js"></script>
+
 <script src="components/viewer/viewer-directive.js"></script>
 <script src="components/console/console.js"></script>
 <script src="components/console/console-directive.js"></script>
