@@ -20,6 +20,10 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
               }
              });
 
+             $scope.$on('setMode', function (event, args) {
+                 $($element).ieecloudEditor('setMode', args);
+             });
+
              $scope.$on('showRuler', function (event) {
                  $($element).ieecloudEditor('showRuler', event);
              });
@@ -45,7 +49,7 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
          link: function (scope, element, attrs) {
              $(element).ieecloudEditor({
                  textureUrl: "",
-                 mode: "editor",
+                 mode: "3d_point",
                  resultDigits: 3,
                  drawResults: false,
                  gridVisible: true,

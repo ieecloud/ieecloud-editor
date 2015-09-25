@@ -43,7 +43,6 @@ angular.module('ieecloud-editor.editor.tree', ['ui.router'])
          $scope.visible = function (item) {
 
            return findChildren(item, $scope.query || '', function (node, text) {
-             console.log(node.name.toLowerCase())
              return !(text && text.length > 0 && node.name.toLowerCase().indexOf(text.toLowerCase()) === -1)
            });
          };
@@ -140,6 +139,11 @@ angular.module('ieecloud-editor.editor.tree', ['ui.router'])
          $scope.isInclude = function (node){
             return _.includes($scope.selectedNodes, node);
          };
+
+
+          $scope.$on('onSelectNode', function (event, data) {
+             $scope.onSelectNode(data.node, data.select);
+          });
 
          // fires when user select in viewer
          $scope.onSelectNode = function(node, select){

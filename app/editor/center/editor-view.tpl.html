@@ -12,9 +12,9 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="split-button">
-                <li role="menuitem"><a ng-click="setMode()">3d point</a></li>
-                <li role="menuitem"><a ng-click="setMode()">3d geometry</a></li>
-                <li role="menuitem"><a ng-click="setMode()">faces and nodes</a></li>
+                <li role="menuitem" ng-repeat="mode in modes">
+                    <a ng-click="setMode(mode.key)" class="pointer" ng-bind="mode.label"></a>
+                </li>
             </ul>
         </div>
     </div>
