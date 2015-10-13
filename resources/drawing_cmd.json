@@ -3,6 +3,7 @@
     "id": 1,
     "name": "box",
     "description": "Draw box with current cursor and dimensions dx dy dz",
+    "visible": true,
     "iconClazz": "fa-cube",
     "action": {
       "type": "drawing",
@@ -20,6 +21,7 @@
     "name": "circle",
     "description": "circle",
     "iconClazz": "fa-circle-o",
+    "visible": false,
     "action": {
       "type": "drawing",
       "name": "editorAPI",
@@ -36,6 +38,7 @@
     "name": "line",
     "description": "circle",
     "iconClazz": "fa-arrows-h",
+    "visible": false,
     "action": {
       "type": "drawing",
       "name": "editorAPI",

@@ -11,6 +11,7 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
              onTreeLoad: '&',
              onStartRender: '&',
              onEndRender: '&',
+             onSelect3dPoint: '&',
              model: '=model'
          },
          controller: function ($scope, $element, $attrs) {
@@ -49,7 +50,7 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
          link: function (scope, element, attrs) {
              $(element).ieecloudEditor({
                  textureUrl: "",
-                 mode: "3d_point",
+                 mode: "3d_geometry",
                  resultDigits: 3,
                  drawResults: false,
                  gridVisible: true,
@@ -71,6 +72,9 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
                  },
                  onTreeLoad: function (tree) {
                      scope.onTreeLoad({tree: tree});
+                 },
+                 onSelect3dPoint: function (point) {
+                    scope.onSelect3dPoint({point: point});
                  }
              });
 

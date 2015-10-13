@@ -39,7 +39,6 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
      };
 
       $scope.$on('renderModel', function (event, data) {
-           console.log("rendering");
           $scope.model = data;
           $scope.$apply();
       });
@@ -51,5 +50,37 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
       $scope.onSelectNode = function(node, select){
          $rootScope.$broadcast('onSelectNode', {node:node, select:select});
       };
+
+       // fires when user select point by ruler
+      $scope.pointSelected = function(point){
+          $rootScope.$broadcast('editor.cmd.update', {cmdType: $scope.cmdType, point:point, paramsLength : $scope.cmd.action.params.length});
+      };
+
+
+       $scope.$on('editor.cmd', function (event, cmd) {
+          if(cmd){
+             $scope.cmd = cmd;
+             if(cmd.action.params.length  === 2  && cmd.action.params[1]){
+                 $scope.cmdType = _.find($scope.paramTypes, { 'id': cmd.action.params[1].coordinate});
+                 var possibleTools = $scope.cmdType.tools;
+                 if(_.includes(possibleTools, "3d_point")){
+                    $scope.setMode("3d_point")
+                 }
+
+                 if(_.includes(possibleTools, "ruler")){
+                     $scope.addRuler();
+                 }
+
+             }
+          }
+       });
+
+       var init = function(){
+           $http.get('/../../resources/drawing_cmd_param_types.json').success(function(data) {
+               $scope.paramTypes = data;
+           });
+       }
+
+       init();
 
 }]);

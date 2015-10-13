@@ -93,9 +93,18 @@ angular.module('ieecloud-editor.console.console-directive', [])
 
               scope.$on('editor.cmd', function (event, cmd) {
                 if(cmd){
-                    var cmdNameStart = 'd.' + cmd.name.substring(0, cmd.name.indexOf('(') + 1);
+                    var cmdNameStart = 'd.' + cmd.name + "(";
                    controller.promptText(cmdNameStart);
                 }
+              });
+
+              scope.$on('editor.cmd.update', function (event, data) {
+                   var currentCmd = controller.promptText();
+                   if(currentCmd.indexOf('Coordinate')!==-1){
+                       controller.promptText(currentCmd  + ", new Coordinate (" + data.point.x + "," + data.point.y + "," + data.point.z + "))" );
+                       return;
+                   }
+                   controller.promptText(currentCmd  + "new Coordinate (" + data.point.x + "," + data.point.y + "," + data.point.z + ")" );
               });
          }};
   }]);
