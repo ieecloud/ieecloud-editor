@@ -1,3 +1,18 @@
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Double Dialog</h3>
+    </div>
+    <div class="modal-body">
+        <input type="text" class="form-control"  ng-model="doubleValue" placeholder="Enter" required="" autofocus=""/>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+
+
 <div class="panel panel-default">
     <div class="panel-heading" style="background-color:transparent;">
         <button type="button" class="btn btn-primary btn-sm" ng-click="loadModel()">Model</button>
@@ -6,9 +21,9 @@
         <button type="button" class="btn btn-primary btn-sm" ng-click="showVProtractor()">Protractor V</button>
         <button type="button" class="btn btn-primary btn-sm" ng-click="showHProtractor()">Protractor H</button>
         <!-- Split button -->
-        <div class="btn-group" dropdown>
+        <div class="btn-group" dropdown >
             <button id="split-button" type="button" class="btn btn-primary btn-sm">Mode</button>
-            <button type="button" class="btn btn-primary btn-sm" dropdown-toggle>
+            <button type="button" ng-disabled="changeModeBtnDisabled"  class="btn btn-primary btn-sm" dropdown-toggle>
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="split-button">

@@ -10,8 +10,8 @@
       "name": "editorAPI",
       "method": "box",
       "params": [
-        {"cursor": "COORDINATE"},
-        {"coordinate": "COORDINATE"}
+        "COORDINATE",
+        "COORDINATE"
       ]
     },
     "preview": "/preview/box.js"
@@ -21,14 +21,14 @@
     "name": "circle",
     "description": "circle",
     "iconClazz": "fa-circle-o",
-    "visible": false,
+    "visible": true,
     "action": {
       "type": "drawing",
       "name": "editorAPI",
       "method": "circle",
       "params": [
-        {"cursor": "COORDINATE"},
-        {"coordinate": "DOUBLE"}
+         "COORDINATE",
+         "DOUBLE"
       ]
     },
     "preview": "/preview/circle.js"
@@ -38,14 +38,14 @@
     "name": "line",
     "description": "circle",
     "iconClazz": "fa-arrows-h",
-    "visible": false,
+    "visible": true,
     "action": {
       "type": "drawing",
       "name": "editorAPI",
       "method": "circle",
       "params": [
-        {"cursor": "COORDINATE"},
-        {"coordinate": "COORDINATE"}
+        "COORDINATE",
+        "COORDINATE"
       ]
     },
     "preview": "/preview/line.js"
