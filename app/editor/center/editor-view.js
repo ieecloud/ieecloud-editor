@@ -60,7 +60,6 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
           $rootScope.$broadcast('editor.cmd.update', {cmdType: $scope.cmdType, point:point, paramsLength : $scope.cmd.action.params.length});
       };
 
-      $scope.queue = [];
 
        var setupModes = function(param){
            $scope.cmdType = _.find($scope.paramTypes, { 'id': param});
@@ -127,8 +126,9 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
 
        $scope.$on('editor.cmd', function (event, cmd) {
           if(cmd){
+             $scope.queue = [];
              $scope.cmd = cmd;
-             $scope.params = cmd.action.params;
+             $scope.params = angular.copy(cmd.action.params);
              $scope.changeModeBtnDisabled = true;
              requireCurrentParam();
           }
