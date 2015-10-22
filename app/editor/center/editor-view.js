@@ -56,8 +56,10 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
 
        // fires when user select point by ruler
       $scope.pointSelected = function(point){
-          $scope.queue.shift().resolve();
-          $rootScope.$broadcast('editor.cmd.update', {cmdType: $scope.cmdType, point:point, paramsLength : $scope.cmd.action.params.length});
+          if($scope.queue.length > 0){
+             $scope.queue.shift().resolve();
+             $rootScope.$broadcast('editor.cmd.update', {cmdType: $scope.cmdType, point:point, paramsLength : $scope.cmd.action.params.length});
+          }
       };
 
 
@@ -99,8 +101,10 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
                     });
 
                     modalInstance.result.then(function (doubleValue) {
-                        $scope.queue.shift().resolve();
-                         $rootScope.$broadcast('editor.cmd.update', {cmdType: $scope.cmdType, point:doubleValue, paramsLength : $scope.cmd.action.params.length});
+                       if($scope.queue.length > 0){
+                          $scope.queue.shift().resolve();
+                          $rootScope.$broadcast('editor.cmd.update', {cmdType: $scope.cmdType, point:doubleValue, paramsLength : $scope.cmd.action.params.length});
+                       }
                     }, function () {
                       $log.info('Modal dismissed at: ' + new Date());
                     });
@@ -126,7 +130,6 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
 
        $scope.$on('editor.cmd', function (event, cmd) {
           if(cmd){
-             $scope.queue = [];
              $scope.cmd = cmd;
              $scope.params = angular.copy(cmd.action.params);
              $scope.changeModeBtnDisabled = true;
@@ -138,6 +141,8 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
            $http.get('/../../resources/drawing_cmd_param_types.json').success(function(data) {
                $scope.paramTypes = data;
            });
+
+            $scope.queue = [];
        }
 
        init();
