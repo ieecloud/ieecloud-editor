@@ -78,7 +78,7 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
            $scope.cmdType = _.find($scope.paramTypes, { 'id': param});
             var possibleTools = $scope.cmdType.tools;
             if(_.includes(possibleTools, "3d_point")){
-               $scope.setMode("3d_point")
+//               $scope.setMode("3d_point")
             }
 
             if(_.includes(possibleTools, "ruler")){
