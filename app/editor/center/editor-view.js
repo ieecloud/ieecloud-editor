@@ -115,6 +115,7 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
 
           }else{
               console.log("DISPATCH RUN");
+//              $rootScope.$broadcast('editor.cmd.run');
               $scope.changeModeBtnDisabled = false;
           }
        }

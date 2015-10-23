@@ -647,6 +647,10 @@
             return promptText;
         };
 
+        extern.commandTrigger = function () {
+            commandTrigger();
+        };
+
         extern.commandResult = commandResult;
 
         ////////////////////////////////////////////////////////////////////////
