@@ -21,6 +21,15 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
         });
     };
 
+     $scope.toggleTree = function () {
+       var $wrapper = $("#wrapper");
+       $wrapper.toggleClass("toggled");
+       $wrapper.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
+        function() {
+           $rootScope.$broadcast('resizeViewer');
+        });
+     };
+
      $scope.setMode = function (modeKey) {
        $rootScope.$broadcast('setMode', modeKey);
      };

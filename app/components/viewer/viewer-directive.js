@@ -21,7 +21,11 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
               }
              });
 
-             $scope.$on('setMode', function (event, args) {
+             $scope.$on('resizeViewer', function (event) {
+                 $($element).ieecloudEditor('resize');
+             });
+
+              $scope.$on('setMode', function (event, args) {
                  $($element).ieecloudEditor('setMode', args);
              });
 
