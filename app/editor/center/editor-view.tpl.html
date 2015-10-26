@@ -15,16 +15,17 @@
 
 <div class="panel panel-default">
     <div class="panel-heading" style="background-color:transparent;">
-        <button type="button" class="btn btn-primary btn-sm" ng-click="toggleTree()">Toggle Tree</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-click="loadModel()">Model</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-click="editMode()">Edit Mode</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-click="addRuler()">Ruler</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-click="showVProtractor()">Protractor V</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-click="showHProtractor()">Protractor H</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-disabled="readOnly" ng-click="toggleTree()">Toggle Tree</button>
+        <!--<button type="button" class="btn btn-primary btn-sm" ng-click="loadModel()">Model</button>-->
+        <button type="button" class="btn btn-primary btn-sm"  ng-click="editMode()">Edit Mode</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-disabled="readOnly" ng-click="addRuler()">Ruler</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-disabled="readOnly" ng-click="showVProtractor()">Protractor V</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-disabled="readOnly" ng-click="showHProtractor()">Protractor H</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-disabled="readOnly" ng-click="saveModel()">Save</button>
         <!-- Split button -->
         <div class="btn-group" dropdown >
             <button id="split-button" type="button" class="btn btn-primary btn-sm">Mode</button>
-            <button type="button" ng-disabled="changeModeBtnDisabled"  class="btn btn-primary btn-sm" dropdown-toggle>
+            <button type="button" ng-disabled="changeModeBtnDisabled || readOnly"  class="btn btn-primary btn-sm" dropdown-toggle>
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="split-button">

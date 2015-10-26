@@ -104,6 +104,14 @@ angular.module('ieecloud-editor.console.console-directive', [])
                   controller.commandTrigger();
               });
 
+              scope.$on('editor.save', function (event) {
+                  var currentCmd = controller.promptText();
+                  if(currentCmd.length === 0){
+                      controller.promptText("d.save()");
+                      controller.commandTrigger();
+                  }
+              });
+
               scope.$on('editor.cmd.update', function (event, data) {
                    var currentCmd = controller.promptText();
                    var text = data.cmdType.id === "DOUBLE" ? data.point : "new com.ieecloud.geometry.Coordinate(" + data.point.x + "," + data.point.y + "," + data.point.z + ")"
