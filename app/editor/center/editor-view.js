@@ -135,7 +135,13 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
            });
 
             $scope.queue = [];
-       }
+
+           //TODO set base url instead of hardcoded value
+           var urlModel = 'http://10.66.12.186:9000' + '/data/wso_display/'+$stateParams.wsoUuid+'/'+$stateParams.wsoVersion+'/'+$stateParams.pad+'.json';
+           $http.get(urlModel).success(function(data) {
+               $scope.model = data;
+           });
+       };
 
        init();
 
