@@ -7,10 +7,10 @@ angular.module('ieecloud-editor.editor.console', ['ui.router'])
       $scope.selCmdId = 0;
 
       $scope.$on('renderCommands', function (event, data) {
-          console.log("rendering commands");
-          console.log(data);
-          $scope.commands = JSON.parse(data);
-          $scope.$apply();
+          //console.log("rendering commands");
+          //console.log(data);
+          //$scope.commands = JSON.parse(data);
+          //$scope.$apply();
       });
 
       $scope.runCmd = function(cmd){

@@ -56,7 +56,7 @@ angular.module('ieecloud-editor.console', [])
             //TODO: pass params from url and pass cb function for output to console info
            //service.execute(function(data) {}, 'com.ieecloud.fe.drawing.FEDrawing d = new com.ieecloud.fe.drawing.FEDrawing("e6978ee8-f0d0-43d3-8a45-7ff1f5b86cae","1","99c96090-2077-4adb-8922-4d615f2496c7")');
            service.execute(function(data) {}, 'com.ieecloud.fe.drawing.FEDrawing d = new com.ieecloud.fe.drawing.FEDrawing("'+$stateParams.wsoUuid+'","'+$stateParams.wsoVersion+'","'+$stateParams.pad+'")');
-           service.executeGetModelAsJsonAndRenderModel('new com.ieecloud.fe.drawing.FEDrawing().getAvailableCommandsAsJson()', 'renderCommands');
+          // service.executeGetModelAsJsonAndRenderModel('new com.ieecloud.fe.drawing.FEDrawing().getAvailableCommandsAsJson()', 'renderCommands');
 
             //var expression = 'com.ieecloud.fe.drawing.FEDrawing d = new com.ieecloud.fe.drawing.FEDrawing("e6978ee8-f0d0-43d3-8a45-7ff1f5b86cae","1","99c96090-2077-4adb-8922-4d615f2496c7")';
             //$(".jquery-console-inner .jquery-console-prompt").text(expression);
