@@ -3,12 +3,21 @@
     "id": "COORDINATE",
     "name": "coordinate",
     "description": "Point in 3d",
-    "tools": ["ruler", "3d_point"]
+    "tools": ["ruler", "3d_point"],
+    "mode": "3d_point"
   },
   {
     "id": "DOUBLE",
     "name": "double",
-    "description": "Dimension",
-    "tools": ["ruler", "dialog_double"]
+    "description": "Double",
+    "tools": ["ruler", "dialog_double"],
+    "mode": "3d_point"
+  },
+  {
+    "id": "SHAPE_NAME",
+    "name": "shapeName",
+    "description": "Shape Name",
+    "tools": ["cursor"],
+    "mode": "3d_geometry"
   }
 ]

@@ -84,5 +84,21 @@
       ]
     },
     "preview": "/preview/cylinder.js"
+  },
+  {
+    "id": 6,
+    "name": "remove",
+    "description": "remove",
+    "iconClazz": "fa-times",
+    "visible": true,
+    "action": {
+      "type": "drawing",
+      "name": "editorAPI",
+      "method": "remove",
+      "params": [
+        "SHAPE_NAME"
+      ]
+    },
+    "preview": "/preview/remove.js"
   }
 ]
