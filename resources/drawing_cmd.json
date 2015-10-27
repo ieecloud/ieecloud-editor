@@ -36,7 +36,7 @@
   {
     "id": 3,
     "name": "line",
-    "description": "circle",
+    "description": "line",
     "iconClazz": "fa-arrows-h",
     "visible": true,
     "action": {
@@ -49,5 +49,40 @@
       ]
     },
     "preview": "/preview/line.js"
+  },
+  {
+    "id": 4,
+    "name": "parabola",
+    "description": "parabola",
+    "iconClazz": "fa-underline",
+    "visible": true,
+    "action": {
+      "type": "drawing",
+      "name": "editorAPI",
+      "method": "parabola",
+      "params": [
+        "COORDINATE",
+        "DOUBLE"
+      ]
+    },
+    "preview": "/preview/parabola.js"
+  },
+  {
+    "id": 5,
+    "name": "cylinder",
+    "description": "cylinder",
+    "iconClazz": "fa-battery-empty",
+    "visible": true,
+    "action": {
+      "type": "drawing",
+      "name": "editorAPI",
+      "method": "cylinder",
+      "params": [
+        "COORDINATE",
+        "DOUBLE",
+        "DOUBLE"
+      ]
+    },
+    "preview": "/preview/cylinder.js"
   }
 ]
