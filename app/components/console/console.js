@@ -49,31 +49,11 @@ angular.module('ieecloud-editor.console', [])
            $.ajax({type: 'POST', async: false, url: baseUrl +'/remove', data: 'id=' + service.session.clientId});
         },
 
-
         restartSession: function() {
            service.closeSession();
            service.createNewSession(service.session.expression, service.session.snap);
-            //TODO: pass params from url and pass cb function for output to console info
-           //service.execute(function(data) {}, 'com.ieecloud.fe.drawing.FEDrawing d = new com.ieecloud.fe.drawing.FEDrawing("e6978ee8-f0d0-43d3-8a45-7ff1f5b86cae","1","99c96090-2077-4adb-8922-4d615f2496c7")');
-           service.execute(function(data) {}, 'com.ieecloud.fe.drawing.FEDrawing d = new com.ieecloud.fe.drawing.FEDrawing("'+$stateParams.wsoUuid+'","'+$stateParams.wsoVersion+'","'+$stateParams.pad+'")');
-          // service.executeGetModelAsJsonAndRenderModel('new com.ieecloud.fe.drawing.FEDrawing().getAvailableCommandsAsJson()', 'renderCommands');
-
-            //var expression = 'com.ieecloud.fe.drawing.FEDrawing d = new com.ieecloud.fe.drawing.FEDrawing("e6978ee8-f0d0-43d3-8a45-7ff1f5b86cae","1","99c96090-2077-4adb-8922-4d615f2496c7")';
-            //$(".jquery-console-inner .jquery-console-prompt").text(expression);
-            //$(".jquery-console-inner .jquery-console-prompt").append('<span class="jquery-console-cursor">&nbsp;</span>');
-            //
-            //var e = $.Event("keypress");
-            //e.which = 13; //choose the one you want
-            //e.keyCode = 13;
-            //$(".jquery-console-typer").trigger(e);
-
-
-            //.append('<div class="jquery-console-prompt-box">' + data + '</div>')
-
-            //TODO: pass params from url and pass cb function for output to console info
-            //service.execute(function(data) {
-            //    $(".jquery-console-inner").append('<div class="jquery-console-message jquery-console-message-success">' + data + '</div>')
-            //}, 'com.ieecloud.fe.drawing.FEDrawing d = new com.ieecloud.fe.drawing.FEDrawing("e6978ee8-f0d0-43d3-8a45-7ff1f5b86cae","1","99c96090-2077-4adb-8922-4d615f2496c7")');
+            var cmdNewDrawing = 'com.ieecloud.fe.drawing.FEDrawing d = new com.ieecloud.fe.drawing.FEDrawing("'+$stateParams.wsoUuid+'","'+$stateParams.wsoVersion+'","'+$stateParams.pad+'")';
+            $injector.get('$rootScope').$broadcast('editor.cmd.exec', cmdNewDrawing);
         },
 
         makeSnap : function() {

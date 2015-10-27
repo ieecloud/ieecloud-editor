@@ -104,6 +104,12 @@ angular.module('ieecloud-editor.console.console-directive', [])
                   controller.commandTrigger();
               });
 
+              scope.$on('editor.cmd.exec', function (event, data) {
+                  var currentCmd = controller.promptText();
+                  controller.promptText(data);
+                  controller.commandTrigger();
+              });
+
               scope.$on('editor.save', function (event) {
                   var currentCmd = controller.promptText();
                   if(currentCmd.length === 0){
