@@ -17,7 +17,7 @@
     "id": "SHAPE_NAME",
     "name": "shapeName",
     "description": "Shape Name",
-    "tools": ["cursor"],
+    "tools": ["cursor", "tree"],
     "mode": "3d_geometry"
   }
 ]
