@@ -79,7 +79,7 @@
       "name": "editorAPI",
       "method": "remove",
       "params": [
-        "SHAPE_NAME"
+        "OBJECT_NAME"
       ]
     },
     "preview": "/preview/remove.js"
