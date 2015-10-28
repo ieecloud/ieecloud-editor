@@ -14,6 +14,13 @@
     "mode": "3d_point"
   },
   {
+    "id": "OBJECT_NAME",
+    "name": "objectName",
+    "description": "Object Name",
+    "tools": ["cursor", "tree"],
+    "mode": "3d_geometry"
+  },
+  {
     "id": "SHAPE_NAME",
     "name": "shapeName",
     "description": "Shape Name",

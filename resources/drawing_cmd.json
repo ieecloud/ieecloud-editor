@@ -51,23 +51,6 @@
     "preview": "/preview/line.js"
   },
   {
-    "id": 4,
-    "name": "parabola",
-    "description": "parabola",
-    "iconClazz": "fa-underline",
-    "visible": true,
-    "action": {
-      "type": "drawing",
-      "name": "editorAPI",
-      "method": "parabola",
-      "params": [
-        "COORDINATE",
-        "DOUBLE"
-      ]
-    },
-    "preview": "/preview/parabola.js"
-  },
-  {
     "id": 5,
     "name": "cylinder",
     "description": "cylinder",

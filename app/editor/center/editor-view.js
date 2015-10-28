@@ -42,8 +42,13 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
      };
 
      $scope.saveModel = function () {
-         $rootScope.$broadcast('editor.save');
+         $rootScope.$broadcast('editor.cmd.exec', 'd.save()');
      };
+
+      $scope.meshModel = function () {
+          $rootScope.$broadcast('editor.cmd.exec', 'd.setMeshSize(0.5)');
+          $rootScope.$broadcast('editor.cmd.exec', 'd.mesh()');
+      };
 
      $scope.addRuler = function () {
          $rootScope.$broadcast('showRuler', 'true');
