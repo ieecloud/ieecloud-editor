@@ -25,6 +25,6 @@
     "name": "shapeName",
     "description": "Shape Name",
     "tools": ["cursor", "tree"],
-    "mode": "3d_geometry"
+    "mode": "3d_faces_and_edges"
   }
 ]
