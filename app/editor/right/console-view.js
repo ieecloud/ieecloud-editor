@@ -14,6 +14,9 @@ angular.module('ieecloud-editor.editor.console', ['ui.router'])
       });
 
       $scope.runCmd = function(cmd){
+         if($rootScope.readOnly){
+            return;
+         }
          $scope.selCmdId = cmd.id;
          $rootScope.$broadcast('editor.cmd', cmd);
       };

@@ -159,6 +159,18 @@ code {
     font-weight: bold;
 }
 
+.console-disabled {
+      position: absolute;
+      top: 42px;
+      left: 10px;
+      right: 10px;
+      bottom: 432px;
+      z-index: 1001;
+      background-color: white;
+      opacity: .7;
+}
+
+
 
 .margin-left-5{
    margin-left:5px;
@@ -202,6 +214,16 @@ code {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.list-group a.disabled {
+  color: #999999;
+}
+.list-group a.disabled:hover,
+.list-group a.disabled:focus {
+  color: #999999;
+  text-decoration: none;
+  cursor: not-allowed;
 }
 
 

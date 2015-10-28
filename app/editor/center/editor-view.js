@@ -13,8 +13,6 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
 
     $scope.modes = modesConst;
 
-    $scope.readOnly = true;
-
     $scope.changeModeBtnDisabled = false;
 
     $scope.loadModel = function () {
@@ -37,7 +35,7 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
      };
 
      $scope.editMode = function () {
-         $scope.readOnly = false;
+         $rootScope.readOnly = false;
          $rootScope.$broadcast('editMode', 'true');
      };
 

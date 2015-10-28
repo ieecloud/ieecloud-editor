@@ -82,7 +82,7 @@ angular.module('ieecloud-editor.console.console-directive', [])
                       return [];
                   },
                   welcomeMessage: consoleApiProvider.session.welcomeMessage,
-                  autofocus: true,
+                  autofocus: false,
                   animateScroll: true,
                   promptHistory: true,
                   charInsertTrigger: function (keycode, line) {

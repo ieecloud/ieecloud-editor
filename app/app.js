@@ -33,6 +33,7 @@ angular.module('ieecloud-editor', [
   });
 
    $urlRouterProvider.otherwise( '/editor' );
-
-})
+}).run(function($rootScope) {
+     $rootScope.readOnly = true;
+});
 
