@@ -1,17 +1,21 @@
 <div class="row" style="margin-top: 15px;">
-    <div id="wrapper">
-        <div id="sidebar-wrapper">
+    <div id="wrapper" class="toggled">
+
+        <div id="sidebar-wrapper" ng-style="sidebarStyle">
             <div ui-view="left"></div>
         </div>
-        <div class="col-md-12">
+
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-9 col-padding-8">
+                    <div class="col-md-9">
                         <div ui-view="center"></div>
                     </div>
-                    <div class="col-md-3 col-padding-8">
+                    <div class="col-md-3">
                         <div ui-view="right"></div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </div>

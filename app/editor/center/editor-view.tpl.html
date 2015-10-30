@@ -13,18 +13,23 @@
 
 
 
-<div class="panel panel-default">
+<div class="panel panel-default" style="border-radius: 0px;">
     <div class="panel-heading" style="background-color:transparent;">
-        <button type="button" class="btn btn-primary btn-sm" ng-disabled="readOnly" ng-click="toggleTree()">Toggle Tree</button>
+
+        <i class="fa fa-edit" style="font-size:2em;" ng-if="readOnly" ng-click="editMode()"></i>
+
+        <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="toggleTree()">Toggle Tree</button>
         <!--<button type="button" class="btn btn-primary btn-sm" ng-click="loadModel()">Model</button>-->
-        <button type="button" class="btn btn-primary btn-sm"  ng-click="editMode()">Edit Mode</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-disabled="readOnly" ng-click="addRuler()">Ruler</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-disabled="readOnly" ng-click="showVProtractor()">Protractor V</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-disabled="readOnly" ng-click="showHProtractor()">Protractor H</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-disabled="readOnly" ng-click="meshModel()">Mesh</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-disabled="readOnly" ng-click="saveModel()">Save</button>
+        <!--<button type="button" class="btn btn-primary btn-sm"  ng-click="editMode()">Edit Mode</button>-->
+        <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="addRuler()">Ruler</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="showVProtractor()">Protractor V</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="showHProtractor()">Protractor H</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="meshModel()">Mesh</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="saveModel()">Save</button>
+
+
         <!-- Split button -->
-        <div class="btn-group" dropdown >
+        <div class="btn-group" dropdown  ng-if="!readOnly">
             <button id="split-button" type="button" class="btn btn-primary btn-sm">Mode</button>
             <button type="button" ng-disabled="changeModeBtnDisabled || readOnly"  class="btn btn-primary btn-sm" dropdown-toggle>
                 <span class="caret"></span>

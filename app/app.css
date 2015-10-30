@@ -29,13 +29,10 @@
   padding: 0;
 }
 
-body > .container {
-  padding: 60px 15px 0;
+body{
+  overflow:hidden;
 }
 
-html, body, .full-height {
-    height: 100%;
-}
 
 .console-panel {
     height: 15%; /*fall back for IE8, Safari 5.1, Opera Mini and pre-4.4 Android browsers*/
@@ -64,7 +61,7 @@ code {
 #content {
   margin-right: auto;
   margin-left: auto;
-  padding-top: 61px;
+
 }
 
 
@@ -73,7 +70,7 @@ code {
 
 .viewer-section {
     position: relative;
-    height: 800px;
+    height: calc(100vh - 70px);
     overflow:hidden;
 }
 
@@ -168,6 +165,7 @@ code {
       z-index: 1001;
       background-color: white;
       opacity: .7;
+       cursor: not-allowed;
 }
 
 
@@ -186,7 +184,7 @@ code {
 
 .command-body{
    padding:0;
-   overflow-y:scroll;height:333px;
+   overflow-y:auto;height:333px;
 }
 
 .command-group{
@@ -271,7 +269,7 @@ code {
 }
 
 .tree-node-content {
-    margin: 10px;
+    margin: -1px;
 }
 .tree-handle {
     padding: 10px;
@@ -285,7 +283,7 @@ code {
     z-index: 2;
     color: #fff;
     background-color: #337ab7;
-    border-color: #337ab7;
+    border-color: white;
 }
 
 .tree-node-content:hover {
@@ -309,7 +307,7 @@ code {
 
 .tree-body{
    padding:0;
-   overflow-y:auto;height:798px;
+
 }
 
 
@@ -323,7 +321,7 @@ code {
   cursor:pointer;
 }
 
-/* Toggle Styles */
+/* Layout Styles */
 
 #wrapper {
     padding-left: 0;
@@ -335,6 +333,8 @@ code {
 
 #wrapper.toggled {
     padding-left: 300px;
+    height: 100vh;
+    height: 100vh;
 }
 
 #sidebar-wrapper {
@@ -342,8 +342,11 @@ code {
     position: fixed;
     left: 300px;
     width: 0;
+    height: 100%;
     margin-left: -300px;
     overflow-y: auto;
+    background-color: #fff;
+    box-shadow: 0px 1px 10px #A9A9A9;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -352,6 +355,56 @@ code {
 
 #wrapper.toggled #sidebar-wrapper {
     width: 300px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 2px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -300px;
+}
+
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 300px;
+        height: 100vh;
+        height: 100vh;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 300px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 2px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border: 1px solid transparent;
 }
 
 
