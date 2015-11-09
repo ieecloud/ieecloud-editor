@@ -30,6 +30,15 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
         });
      };
 
+     $scope.showTree = function () {
+       var $wrapper = $("#wrapper");
+       $wrapper.removeClass("toggled");
+       $wrapper.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
+        function() {
+           $rootScope.$broadcast('resizeViewer');
+        });
+     };
+
      $scope.setMode = function (modeKey) {
        $rootScope.$broadcast('setMode', modeKey);
      };
@@ -80,19 +89,27 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
              $rootScope.$broadcast('editor.cmd.update', {cmdType: $scope.cmdType, point:point, paramsLength : $scope.cmd.action.params.length});
           }
       };
-
+       // fires when user select tree node
+      $scope.$on('selectObject', function (event, args) {
+           if($scope.queue.length > 0 && args.node.children.length > 0){
+             $scope.queue.shift().resolve();
+             $rootScope.$broadcast('editor.cmd.update', {cmdType: $scope.cmdType, point:args.node.name, paramsLength : $scope.cmd.action.params.length});
+          }
+       });
 
        var processCoordinate = function(param){
            var deferred = $q.defer();
 
            $scope.cmdType = _.find($scope.paramTypes, { 'id': param});
             var possibleTools = $scope.cmdType.tools;
-            if(_.includes(possibleTools, "3d_point")){
-               $scope.setMode("3d_point")
-            }
+            $scope.setMode($scope.cmdType.mode);
 
             if(_.includes(possibleTools, "ruler")){
                 $scope.addRuler();
+            }
+
+            if(_.includes(possibleTools, "tree")){
+                 $scope.showTree();
             }
 
             if(_.includes(possibleTools, "dialog_double")){

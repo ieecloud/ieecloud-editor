@@ -120,7 +120,14 @@ angular.module('ieecloud-editor.console.console-directive', [])
 
               scope.$on('editor.cmd.update', function (event, data) {
                    var currentCmd = controller.promptText();
-                   var text = data.cmdType.id === "DOUBLE" ? data.point : "new com.ieecloud.geometry.Coordinate(" + data.point.x + "," + data.point.y + "," + data.point.z + ")"
+                    var text = "";
+                   if( data.cmdType.id === "DOUBLE" ){
+                       text = data.point;
+                   }else if(data.cmdType.id === "OBJECT_NAME" ){
+                        text = '"' + data.point + '"';
+                   }else if(data.cmdType.id === "COORDINATE" ){
+                        text = "new com.ieecloud.geometry.Coordinate(" + data.point.x + "," + data.point.y + "," + data.point.z + ")";
+                   }
                    if(currentCmd.indexOf('Coordinate')!==-1){
                        controller.promptText(currentCmd  + "," + text );
                        return;
