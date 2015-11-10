@@ -127,11 +127,21 @@ angular.module('ieecloud-editor.console.console-directive', [])
                         text = '"' + data.point + '"';
                    }else if(data.cmdType.id === "COORDINATE" ){
                         text = "new com.ieecloud.geometry.Coordinate(" + data.point.x + "," + data.point.y + "," + data.point.z + ")";
+                   }else if(data.cmdType.id === "ELEMENT" ){
+                       text = data.point;
+                   }else if(data.cmdType.id === "MATERIAL" ){
+                       text = data.point;
                    }
+
+                  //TODO avoid this check
                    if(currentCmd.indexOf('Coordinate')!==-1){
                        controller.promptText(currentCmd  + "," + text );
                        return;
                    }
+                  if(currentCmd.indexOf('setElement')!==-1 && data.cmdType.id === "ELEMENT"){
+                      controller.promptText(currentCmd  + "," + text );
+                      return;
+                  }
                    controller.promptText(currentCmd  + text);
               });
          }};

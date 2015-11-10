@@ -8,7 +8,7 @@ angular.module('ieecloud-editor.console', [])
       newBaseUrl.substring(0, newBaseUrl.length-1) : newBaseUrl;
   },
 
-  this.$get = ['$injector', '$stateParams', function($injector, $stateParams) {
+  this.$get = ['$injector', '$stateParams', '$cookies', function($injector, $stateParams, $cookies) {
 
       $injector.get('$rootScope').$on('editMode', function (event, data) {
           service.restartSession();
@@ -21,6 +21,16 @@ angular.module('ieecloud-editor.console', [])
         _gaq : [],
 
         createNewSession : function(expression, snap) {
+
+            var cookieJavaREPLSessionClientId = $cookies.getObject("javaREPLSessionClientId");
+
+            if(cookieJavaREPLSessionClientId) {
+                service.session = [];
+                service.session.requesting = false;
+                service.session.clientId = cookieJavaREPLSessionClientId;
+                return;
+            }
+
            var newSession = [];
            newSession.expression = expression;
            newSession.snap = snap;
@@ -37,6 +47,8 @@ angular.module('ieecloud-editor.console', [])
            newSession.requesting = false;
 
            service.session = newSession;
+
+            $cookies.putObject("javaREPLSessionClientId", newSession.clientId);
         },
 
 

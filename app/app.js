@@ -8,6 +8,7 @@ angular.module('ieecloud-editor', [
   'ieecloud-editor.console.console-directive',
 
   'ui.router',
+  'ngCookies',
   'ui.bootstrap',
   'ui.tree',
   'ieecloud-editor.editor'

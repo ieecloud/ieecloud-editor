@@ -83,5 +83,39 @@
       ]
     },
     "preview": "/preview/remove.js"
+  },
+  {
+    "id": 7,
+    "name": "setElement",
+    "description": "setElement",
+    "iconClazz": "fa-internet-explorer",
+    "visible": true,
+    "action": {
+      "type": "drawing",
+      "name": "editorAPI",
+      "method": "setElement",
+      "params": [
+        "OBJECT_NAME",
+        "ELEMENT"
+      ]
+    },
+    "preview": "/preview/remove.js"
+  },
+  {
+    "id": 8,
+    "name": "setMaterial",
+    "description": "setMaterial",
+    "iconClazz": "fa-maxcdn",
+    "visible": true,
+    "action": {
+      "type": "drawing",
+      "name": "editorAPI",
+      "method": "setMaterial",
+      "params": [
+        "OBJECT_NAME",
+        "ELEMENT"
+      ]
+    },
+    "preview": ""
   }
 ]

@@ -26,5 +26,12 @@
     "description": "Shape Name",
     "tools": ["cursor", "tree"],
     "mode": "3d_faces_and_edges"
+  },
+  {
+    "id": "ELEMENT",
+    "name": "element",
+    "description": "Element",
+    "tools": ["dialog_element"],
+    "mode": "3d_point"
   }
 ]

@@ -11,6 +11,7 @@
     "angular-bootstrap": "~0.14.1",
     "angular-ui-router": "~0.2",
     "angular-route": "~1.4.0",
+    "angular-cookies": "~1.4.0",
     "angular-loader": "~1.4.0",
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
