@@ -11,6 +11,46 @@
     </div>
 </script>
 
+<!-- Nested node template -->
+<script type="text/ng-template" id="editor_nodes_renderer.html">
+
+    <div ui-tree-handle="" class="tree-node tree-node-content ng-scope ng-binding angular-ui-tree-handle">
+        <!-- ngIf: node.nodes && node.nodes.length > 0 --><a class="btn btn-success btn-xs ng-scope" ng-if="node.nodes &amp;&amp; node.nodes.length > 0" data-nodrag="" ng-click="toggle(this)"><span class="glyphicon glyphicon-chevron-down" ng-class="{
+          'glyphicon-chevron-right': collapsed,
+          'glyphicon-chevron-down': !collapsed
+        }"></span></a><!-- end ngIf: node.nodes && node.nodes.length > 0 -->
+        {{node.title}}
+    </div>
+
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}" class="ng-pristine ng-untouched ng-valid ng-scope angular-ui-tree-nodes">
+        <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'editor_nodes_renderer.html'">
+        </li>
+    </ol>
+</script>
+
+<script type="text/ng-template" id="elementsModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Select Element Dialog</h3>
+    </div>
+    <div class="modal-body">
+        <input type="text" class="form-control"  ng-model="doubleValue" placeholder="Enter" required="" autofocus=""/>
+        <li ng-repeat="todo in todos">
+            <span class="done-{{todo.done}}">{{todo.text}}</span>
+        </li>
+    </div>
+
+    <div ui-tree data-drag-enabled>
+        <ol ui-tree-nodes="" ng-model="data" id="tree-root">
+            <li ng-repeat="node in data" ui-tree-node ng-include="'editor_nodes_renderer.html'"></li>
+        </ol>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
 
 
 <div class="panel panel-default" style="border-radius: 0px;">

@@ -129,6 +129,23 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
                     });
             }
 
+           if(_.includes(possibleTools, "dialog_element")){
+               var modalInstance = $uibModal.open({
+                   animation: true,
+                   templateUrl: 'elementsModalContent.html',
+                   controller: 'ModalElementInstanceCtrl'
+               });
+
+               modalInstance.result.then(function (doubleValue) {
+                   if($scope.queue.length > 0){
+                       $scope.queue.shift().resolve();
+                       $rootScope.$broadcast('editor.cmd.update', {cmdType: $scope.cmdType, point:doubleValue, paramsLength : $scope.cmd.action.params.length});
+                   }
+               }, function () {
+                   $log.info('Modal dismissed at: ' + new Date());
+               });
+           }
+
             $scope.queue.push(deferred);
             return deferred.promise;
        }
@@ -176,7 +193,7 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
 
 .controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
 
-  $scope.doubleValue  = ""
+  $scope.doubleValue  = "";
   $scope.ok = function () {
     $modalInstance.close($scope.doubleValue);
   };
@@ -184,4 +201,74 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
+})
+
+.controller('ModalElementInstanceCtrl', function ($scope, $modalInstance) {
+
+    $scope.doubleValue  = "";
+
+    $scope.todos = [
+        {text:'learn angular', done:true},
+        {text:'build an angular app', done:false}];
+
+    $scope.data = [
+        {
+            "id": 1,
+            "title": "node1",
+            "nodes": [
+                {
+                    "id": 11,
+                    "title": "node1.1",
+                    "nodes": [
+                        {
+                            "id": 111,
+                            "title": "node1.1.1",
+                            "nodes": []
+                        }
+                    ]
+                },
+                {
+                    "id": 12,
+                    "title": "node1.2",
+                    "nodes": []
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "node2",
+            "nodrop": true,
+            "nodes": [
+                {
+                    "id": 21,
+                    "title": "node2.1",
+                    "nodes": []
+                },
+                {
+                    "id": 22,
+                    "title": "node2.2",
+                    "nodes": []
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "node3",
+            "nodes": [
+                {
+                    "id": 31,
+                    "title": "node3.1",
+                    "nodes": []
+                }
+            ]
+        }
+    ];
+
+    $scope.ok = function () {
+        $modalInstance.close($scope.doubleValue);
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
 });
