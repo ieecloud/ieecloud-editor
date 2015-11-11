@@ -11,7 +11,7 @@ angular.module('ieecloud-editor.console', [])
   this.$get = ['$injector', '$stateParams', '$cookies', function($injector, $stateParams, $cookies) {
 
       $injector.get('$rootScope').$on('editMode', function (event, data) {
-          service.restartSession();
+          service.startSession();
       });
 
       var service = {
@@ -58,15 +58,20 @@ angular.module('ieecloud-editor.console', [])
         },
 
         closeSession : function() {
+           $cookies.remove("javaREPLSessionClientId");
            $.ajax({type: 'POST', async: false, url: baseUrl +'/remove', data: 'id=' + service.session.clientId});
         },
 
         restartSession: function() {
            service.closeSession();
-           service.createNewSession(service.session.expression, service.session.snap);
-            var cmdNewDrawing = 'com.ieecloud.fe.drawing.FEDrawing d = new com.ieecloud.fe.drawing.FEDrawing("'+$stateParams.wsoUuid+'","'+$stateParams.wsoVersion+'","'+$stateParams.pad+'")';
-            $injector.get('$rootScope').$broadcast('editor.cmd.exec', cmdNewDrawing);
+           service.startSession();
         },
+
+          startSession: function() {
+              service.createNewSession(service.session.expression, service.session.snap);
+              var cmdNewDrawing = 'com.ieecloud.fe.drawing.FEDrawing d = new com.ieecloud.fe.drawing.FEDrawing("'+$stateParams.wsoUuid+'","'+$stateParams.wsoVersion+'","'+$stateParams.pad+'")';
+              $injector.get('$rootScope').$broadcast('editor.cmd.exec', cmdNewDrawing);
+          },
 
         makeSnap : function() {
            var snapUrl = null;
