@@ -80,6 +80,10 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
        // fires when user select in viewer
       $scope.onSelectNode = function(node, select){
          $rootScope.$broadcast('onSelectNode', {node:node, select:select});
+         if($scope.queue.length > 0 && node.parentName){
+           $scope.queue.shift().resolve();
+           $rootScope.$broadcast('editor.cmd.update', {cmdType: $scope.cmdType, point:node.parentName, paramsLength : $scope.cmd.action.params.length});
+         }
       };
 
        // fires when user select point by ruler
