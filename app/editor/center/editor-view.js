@@ -209,7 +209,7 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
 
 .controller('ModalElementInstanceCtrl', function ($scope, $modalInstance) {
 
-    $scope.doubleValue  = "";
+    $scope.strValue  = "";
 
     $scope.todos = [
         {text:'learn angular', done:true},
@@ -269,7 +269,7 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
     ];
 
     $scope.ok = function () {
-        $modalInstance.close($scope.doubleValue);
+        $modalInstance.close($scope.strValue);
     };
 
     $scope.cancel = function () {

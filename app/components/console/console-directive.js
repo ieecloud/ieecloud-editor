@@ -128,7 +128,7 @@ angular.module('ieecloud-editor.console.console-directive', [])
                    }else if(data.cmdType.id === "COORDINATE" ){
                         text = "new com.ieecloud.geometry.Coordinate(" + data.point.x + "," + data.point.y + "," + data.point.z + ")";
                    }else if(data.cmdType.id === "ELEMENT" ){
-                       text = data.point;
+                       text = "\"" + data.point + "\"";
                    }else if(data.cmdType.id === "MATERIAL" ){
                        text = data.point;
                    }
@@ -138,8 +138,13 @@ angular.module('ieecloud-editor.console.console-directive', [])
                        controller.promptText(currentCmd  + "," + text );
                        return;
                    }
-                  if(currentCmd.indexOf('setElement')!==-1 && data.cmdType.id === "ELEMENT"){
-                      controller.promptText(currentCmd  + "," + text );
+
+                  //TODO avoid this check
+                  if(currentCmd.indexOf('setElements')!==-1 ){
+                      if(currentCmd != 'd.setElements(') {
+                          currentCmd = currentCmd  + ",";
+                      }
+                      controller.promptText(currentCmd  + text);
                       return;
                   }
                    controller.promptText(currentCmd  + text);
