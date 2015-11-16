@@ -20,7 +20,7 @@ angular.module('ieecloud-editor', [
 
 .config( function ieeEditorConfig ( $stateProvider, $urlRouterProvider, consoleApiProvider) {
 
-  consoleApiProvider.setBaseUrl("http://10.66.12.186:8001");
+  consoleApiProvider.setBaseUrl("http://10.66.13.144:8001");
 
 
   $stateProvider.state( 'root', {
