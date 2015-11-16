@@ -86,17 +86,18 @@
   },
   {
     "id": 7,
-    "name": "setElement",
-    "description": "setElement",
+    "name": "setElements",
+    "description": "setElements",
     "iconClazz": "fa-internet-explorer",
     "visible": true,
     "action": {
       "type": "drawing",
       "name": "editorAPI",
-      "method": "setElement",
+      "method": "setElements",
       "params": [
-        "OBJECT_NAME",
-        "ELEMENT"
+        "ELEMENT",
+        "ELEMENT",
+        "OBJECT_NAME"
       ]
     },
     "preview": "/preview/remove.js"
