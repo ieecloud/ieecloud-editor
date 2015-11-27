@@ -16,7 +16,7 @@
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
     "angular-ui-tree": "~2.9.0",
-    "ieecloud-viewer.js": "5a2b94b",
+    "ieecloud-viewer.js": "a446bff",
     "lodash": "~3.10.0"
   },
   "resolutions": {
