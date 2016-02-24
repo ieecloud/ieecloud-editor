@@ -53,7 +53,7 @@
     <!--</div>-->
 <!--</nav>-->
 
-<div class="container-fluid" id="content" ui-view></div>
+<div class="container-fluid" id="content" ui-view="main"></div>
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
@@ -65,17 +65,25 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/ieecloud-viewer.js/bin/ieecloud-viewer.js-0.0.0.min.js"></script>
 <script src="bower_components/lodash/lodash.js"></script>
+<script src="common/resources/resources.js"></script>
+<script src="common/services/retryQueue.js"></script>
+<script src="common/services/cmdMapService.js"></script>
+<script src="common/services/commonExecutor.js"></script>
 <script src="common/filters/filters.js"></script>
+<script src="common/utils/utils.js"></script>
+
+
 <script src="components/console/jquery/jquery.console.js"></script>
-
-
-
 
 
 <script src="app.js"></script>
 <script src="editor/layout.js"></script>
 <script src="editor/left/tree-view.js"></script>
 <script src="editor/center/editor-view.js"></script>
+<script src="editor/center/executors/rulerExecutor.js"></script>
+<script src="editor/center/executors/dialogDoubleExecutor.js"></script>
+<script src="editor/center/executors/dialogElementExecutor.js"></script>
+<script src="editor/center/executors/treeExecutor.js"></script>
 <script src="editor/right/console-view.js"></script>
 
 <script src="components/viewer/viewer-directive.js"></script>

@@ -2,152 +2,164 @@
 
 angular.module('ieecloud-editor.console.console-directive', [])
 
- .directive('console', ['consoleApi', function(consoleApiProvider) {
-    return {
-      restrict: 'EA',
-      scope: {},
-      link: function(scope, element, attrs) {
+    .directive('console', ['consoleApi', '$stateParams', 'actionsRetryQueue', 'cmdMapping',
+        function (consoleApiProvider, $stateParams, actionsRetryQueue, cmdMapping) {
+        return {
+            restrict: 'EA',
+            scope: {
+                control: '='
+            },
+            link: function ($scope, element, attrs) {
 
-           var controller = $(element).console({
-                  promptLabel: 'java> ',
-                  commandValidate: function (line) {
-                      return !consoleApiProvider.session.requesting;
-                  },
-                  commandHandle: function (line, report) {
-                      if (line == ":snap") {
-                          var snapUri = consoleApiProvider.makeSnap();
-                          $(".jquery-console-inner").append('<div class="jquery-console-message jquery-console-link">' +
-                              '<a href="' + snapUri + '" target="_blank">' + snapUri + '</a></div>')
-                          report([]);
-                          return [];
-                      }
-                      var expression = consoleApiProvider.readExpressionLine(line);
+                var controller;
 
-                      if (expression) {
-                          consoleApiProvider.execute(report, expression);
-                      } else {
-                          report([]);
-                          consoleApiProvider.session.requesting = false;
-                      }
+                var init = function () {
 
-                      return [];
+                    $scope.internalControl = $scope.control || {};
 
-                  },
-                  completeHandle: function (prefix) {
-                      var completionResult;
+                    controller = $(element).console({
+                        promptLabel: 'java> ',
+                        commandValidate: function (line) {
+                            return !consoleApiProvider.session.requesting;
+                        },
+                        commandHandle: function (line, report) {
+                            if (line == ":snap") {
+                                var snapUri = consoleApiProvider.makeSnap();
+                                $(".jquery-console-inner").append('<div class="jquery-console-message jquery-console-link">' +
+                                    '<a href="' + snapUri + '" target="_blank">' + snapUri + '</a></div>')
+                                report([]);
+                                return [];
+                            }
+                            var expression = consoleApiProvider.readExpressionLine(line);
 
-                      consoleApiProvider.complete(function(data){
-                          completionResult = data;
-                      }, prefix);
+                            if (expression) {
+                                consoleApiProvider.execute(report, expression);
+                            } else {
+                                report([]);
+                                consoleApiProvider.session.requesting = false;
+                            }
 
-                      var candidates = _.map(completionResult.candidates, function (cand) {
-                          return cand.value;
-                      });
-                      var candidatesForms = _.map(completionResult.candidates, function (cand) {
-                          return cand.forms;
-                      });
-                      var promptText = controller.promptText();
+                            return [];
 
-                      if (candidates.length == 0) {
-                          return [];
-                      }
+                        },
+                        completeHandle: function (prefix) {
+                            var completionResult;
 
-                      if (candidates.length == 1) {
-                          var uniqueForms = _.filter(_.unique(candidatesForms[0]), function (form) {
-                              return form != candidates[0]
-                          });
-                          var text = controller.promptText().substr(0, parseInt(completionResult.position)) + candidates[0];
+                            consoleApiProvider.complete(function (data) {
+                                completionResult = data;
+                            }, prefix);
 
-                          if (uniqueForms.length > 0) {
-                              controller.commandResult(consoleApiProvider.layoutCompletions(candidatesForms[0]), "jquery-console-message-completion");
-                          }
-                          controller.promptText(text);
-                          return [];
-                      }
+                            var candidates = _.map(completionResult.candidates, function (cand) {
+                                return cand.value;
+                            });
+                            var candidatesForms = _.map(completionResult.candidates, function (cand) {
+                                return cand.forms;
+                            });
+                            var promptText = controller.promptText();
 
-                      controller.commandResult(consoleApiProvider.layoutCompletions(candidates), "jquery-console-message-completion");
+                            if (candidates.length == 0) {
+                                return [];
+                            }
 
-                      for (var i = candidates[0].length; i > 0; --i) {
-                          var prefixedCandidatesCount = _.filter(candidates,function (cand) {
-                              return i > cand.length ? false : cand.substr(0, i) == candidates[0].substr(0, i)
-                          }).length;
+                            if (candidates.length == 1) {
+                                var uniqueForms = _.filter(_.unique(candidatesForms[0]), function (form) {
+                                    return form != candidates[0]
+                                });
+                                var text = controller.promptText().substr(0, parseInt(completionResult.position)) + candidates[0];
 
-                          if (prefixedCandidatesCount == candidates.length) {
-                              controller.promptText(promptText.substr(0, parseInt(completionResult.position)) + candidates[0].substr(0, i));
-                              return [];
-                          }
-                      }
+                                if (uniqueForms.length > 0) {
+                                    controller.commandResult(consoleApiProvider.layoutCompletions(candidatesForms[0]), "jquery-console-message-completion");
+                                }
+                                controller.promptText(text);
+                                return [];
+                            }
 
-                      controller.promptText(promptText);
-                      return [];
-                  },
-                  welcomeMessage: consoleApiProvider.session.welcomeMessage,
-                  autofocus: false,
-                  animateScroll: true,
-                  promptHistory: true,
-                  charInsertTrigger: function (keycode, line) {
-                      return true;
-                  }
-              });
+                            controller.commandResult(consoleApiProvider.layoutCompletions(candidates), "jquery-console-message-completion");
+
+                            for (var i = candidates[0].length; i > 0; --i) {
+                                var prefixedCandidatesCount = _.filter(candidates, function (cand) {
+                                    return i > cand.length ? false : cand.substr(0, i) == candidates[0].substr(0, i)
+                                }).length;
+
+                                if (prefixedCandidatesCount == candidates.length) {
+                                    controller.promptText(promptText.substr(0, parseInt(completionResult.position)) + candidates[0].substr(0, i));
+                                    return [];
+                                }
+                            }
+
+                            controller.promptText(promptText);
+                            return [];
+                        },
+                        welcomeMessage: consoleApiProvider.session.welcomeMessage,
+                        autofocus: false,
+                        animateScroll: true,
+                        promptHistory: true,
+                        charInsertTrigger: function (keycode, line) {
+                            return true;
+                        }
+                    });
+
+                };
+
+                init();
+
+                // public methods
+                $scope.internalControl.setCmd = function (cmd) {
+                    if (cmd) {
+                        var cmdNameStart = 'd.' + cmd.name + "(";
+                        controller.promptText(cmdNameStart);
+                    }
+                };
+
+                $scope.internalControl.setCmdParams = function (data) {
+                    var currentCmd = controller.promptText();
+                    var text = cmdMapping.get(data.cmdType.id, data.point);
+
+                    if(!text || !actionsRetryQueue.hasMore()){
+                        return;
+                    }
+
+                    //TODO avoid this check
+                    if (currentCmd.indexOf('Coordinate') !== -1) {
+                        controller.promptText(currentCmd + "," + text);
+                        actionsRetryQueue.retry();
+                        return;
+                    }
+
+                    //TODO avoid this check
+                    if (currentCmd.indexOf('setElements') !== -1) {
+                        if (currentCmd != 'd.setElements(') {
+                            currentCmd = currentCmd + ",";
+                        }
+                        controller.promptText(currentCmd + text);
+                        actionsRetryQueue.retry();
+                        return;
+                    }
+                    controller.promptText(currentCmd + text);
+                    actionsRetryQueue.retry();
+
+                };
+
+                $scope.internalControl.execCurrentCmd = function () {
+                    var currentCmd = controller.promptText();
+                    controller.promptText(currentCmd + ")");
+                    controller.commandTrigger();
+                };
+
+                $scope.internalControl.execCmd = function (cmdText) {
+                    var currentCmd = controller.promptText();
+                    controller.promptText(cmdText);
+                    controller.commandTrigger();
+                };
 
 
-              scope.$on('editor.cmd', function (event, cmd) {
-                if(cmd){
-                    var cmdNameStart = 'd.' + cmd.name + "(";
-                   controller.promptText(cmdNameStart);
-                }
-              });
+                $scope.internalControl.startSession = function () {
+                    consoleApiProvider.startSession();
+                    var cmdNewDrawing = cmdMapping.get('NEW', $stateParams);
+                    controller.promptText(cmdNewDrawing);
+                    controller.commandTrigger();
+                };
 
-              scope.$on('editor.cmd.run', function (event) {
-                  var currentCmd = controller.promptText();
-                  controller.promptText(currentCmd  + ")");
-                  controller.commandTrigger();
-              });
-
-              scope.$on('editor.cmd.exec', function (event, data) {
-                  var currentCmd = controller.promptText();
-                  controller.promptText(data);
-                  controller.commandTrigger();
-              });
-
-              scope.$on('editor.save', function (event) {
-                  var currentCmd = controller.promptText();
-                  if(currentCmd.length === 0){
-                      controller.promptText("d.save()");
-                      controller.commandTrigger();
-                  }
-              });
-
-              scope.$on('editor.cmd.update', function (event, data) {
-                   var currentCmd = controller.promptText();
-                    var text = "";
-                   if( data.cmdType.id === "DOUBLE" ){
-                       text = data.point;
-                   }else if(data.cmdType.id === "OBJECT_NAME" ){
-                        text = '"' + data.point + '"';
-                   }else if(data.cmdType.id === "COORDINATE" ){
-                        text = "new com.ieecloud.geometry.Coordinate(" + data.point.x + "," + data.point.y + "," + data.point.z + ")";
-                   }else if(data.cmdType.id === "ELEMENT" ){
-                       text = "\"" + data.point + "\"";
-                   }else if(data.cmdType.id === "MATERIAL" ){
-                       text = data.point;
-                   }
-
-                  //TODO avoid this check
-                   if(currentCmd.indexOf('Coordinate')!==-1){
-                       controller.promptText(currentCmd  + "," + text );
-                       return;
-                   }
-
-                  //TODO avoid this check
-                  if(currentCmd.indexOf('setElements')!==-1 ){
-                      if(currentCmd != 'd.setElements(') {
-                          currentCmd = currentCmd  + ",";
-                      }
-                      controller.promptText(currentCmd  + text);
-                      return;
-                  }
-                   controller.promptText(currentCmd  + text);
-              });
-         }};
-  }]);
+            }
+        };
+    }]);

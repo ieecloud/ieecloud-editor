@@ -3,7 +3,7 @@
         <h3 class="modal-title">Double Dialog</h3>
     </div>
     <div class="modal-body">
-        <input type="text" class="form-control"  ng-model="doubleValue" placeholder="Enter" required="" autofocus=""/>
+        <input type="text" class="form-control"  ng-model="doubleValue" placeholder="Enter"/>
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
@@ -36,21 +36,6 @@
     <div class="modal-body">
         <input type="text" class="form-control"  ng-model="strValue" placeholder="Enter" required="" autofocus=""/>
     </div>
-
-    <!--
-    <div class="modal-body">
-        <input type="text" class="form-control"  ng-model="doubleValue" placeholder="Enter" required="" autofocus=""/>
-        <li ng-repeat="todo in todos">
-            <span class="done-{{todo.done}}">{{todo.text}}</span>
-        </li>
-    </div>
-
-    <div ui-tree data-drag-enabled>
-        <ol ui-tree-nodes="" ng-model="data" id="tree-root">
-            <li ng-repeat="node in data" ui-tree-node ng-include="'editor_nodes_renderer.html'"></li>
-        </ol>
-    </div>
- -->
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
@@ -66,8 +51,6 @@
         <i class="fa fa-edit" style="font-size:2em;" ng-if="readOnly" ng-click="editMode()"></i>
 
         <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="toggleTree()">Toggle Tree</button>
-        <!--<button type="button" class="btn btn-primary btn-sm" ng-click="loadModel()">Model</button>-->
-        <!--<button type="button" class="btn btn-primary btn-sm"  ng-click="editMode()">Edit Mode</button>-->
         <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="addRuler()">Ruler</button>
         <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="showVProtractor()">Protractor V</button>
         <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="showHProtractor()">Protractor H</button>
@@ -88,8 +71,11 @@
             </ul>
         </div>
     </div>
+
+
+
     <div class="panel-body padding-none">
-        <div viewer model="model" class="viewer-section" id="{{id}}" on-tree-load="onTreeLoad(tree)"
+        <div viewer model="model" class="viewer-section"  control="viewerControl" id="{{id}}" on-tree-load="onTreeLoad(tree)"
              on-select-object="onSelectNode(node, selected)"
              on-start-render="startRender()"
              on-end-render="endRender()"

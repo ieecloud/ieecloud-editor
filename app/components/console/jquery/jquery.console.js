@@ -309,9 +309,9 @@
                 if (
                     typeof config.charInsertTrigger == 'undefined' || (
                         typeof config.charInsertTrigger == 'function' &&
-                            config.charInsertTrigger(keyCode, promptText)
-                        )
-                    ) {
+                        config.charInsertTrigger(keyCode, promptText)
+                    )
+                ) {
                     typer.consoleInsert(keyCode);
                 }
             }
@@ -368,7 +368,7 @@
             if (column < promptText.length) {
                 promptText =
                     promptText.substring(0, column) +
-                        promptText.substring(column + 1);
+                    promptText.substring(column + 1);
                 restoreText = promptText;
                 return true;
             } else return false;
@@ -403,7 +403,7 @@
             }
             // Then, delete until the next non-alphanumeric character
             while (column < promptText.length &&
-                isCharAlphanumeric(promptText[column])) {
+            isCharAlphanumeric(promptText[column])) {
                 deleteCharAtPos();
                 updatePromptDisplay();
             }
@@ -430,10 +430,10 @@
         // Scroll to the bottom of the view
         function scrollToBottom() {
             if (jQuery.fn.jquery > "1.6") {
-                inner.prop({ scrollTop: inner.prop("scrollHeight") });
+                inner.prop({scrollTop: inner.prop("scrollHeight")});
             }
             else {
-                inner.attr({ scrollTop: inner.attr("scrollHeight") });
+                inner.attr({scrollTop: inner.attr("scrollHeight")});
             }
         };
 
@@ -571,23 +571,23 @@
 
         function moveToNextWord() {
             while (column < promptText.length && !isCharAlphanumeric(promptText[column]) &&
-                moveForward()) {
+            moveForward()) {
             }
             while (column < promptText.length &&
-                isCharAlphanumeric(promptText[column]) &&
-                moveForward()) {
+            isCharAlphanumeric(promptText[column]) &&
+            moveForward()) {
             }
         };
 
         function moveToPreviousWord() {
             // Move backward until we find the first alphanumeric
             while (column - 1 >= 0 && !isCharAlphanumeric(promptText[column - 1]) &&
-                moveBackward()) {
+            moveBackward()) {
             }
             // Move until we find the first non-alphanumeric
             while (column - 1 >= 0 &&
-                isCharAlphanumeric(promptText[column - 1]) &&
-                moveBackward()) {
+            isCharAlphanumeric(promptText[column - 1]) &&
+            moveBackward()) {
             }
         };
 
@@ -673,8 +673,8 @@
                 if (current) {
                     current =
                         '<span class="jquery-console-cursor">' +
-                            htmlEncode(current) +
-                            '</span>';
+                        htmlEncode(current) +
+                        '</span>';
                 }
                 var after = line.substring(column + 1);
                 html = htmlEncode(before) + current + htmlEncode(after);
@@ -694,7 +694,7 @@
                     .replace(/</g, '&lt;')
                     .replace(/ /g, '&nbsp;')
                     .replace(/\n/g, '<br />')
-                );
+            );
         };
 
         return extern;

@@ -2,30 +2,13 @@
 
 angular.module('ieecloud-editor.editor.console', ['ui.router'])
 
-.controller('ConsoleViewCtrl', ['$scope', '$http', '$rootScope', '$stateParams', '$log',  function($scope, $http, $rootScope, $stateParams, $log) {
+    .controller('ConsoleViewCtrl', ['$scope', 'commands', function ($scope, commands) {
 
-      $scope.selCmdId = 0;
+        var init = function () {
+            $scope.commands = commands;
+        };
 
-      $scope.$on('editor.cmd.run', function (event) {
-          $scope.selCmdId = 0;
-      });
+        init();
 
-      $scope.$on('renderCommands', function (event, data) {
-          //console.log("rendering commands");
-          //console.log(data);
-          //$scope.commands = JSON.parse(data);
-          //$scope.$apply();
-      });
 
-      $scope.runCmd = function(cmd){
-         if($rootScope.readOnly){
-            return;
-         }
-         $scope.selCmdId = cmd.id;
-         $rootScope.$broadcast('editor.cmd', cmd);
-      };
-
-      $http.get('/../../resources/drawing_cmd.json').success(function(data) {
-          $scope.commands = data;
-      });
-}]);
+    }]);
