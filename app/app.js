@@ -38,7 +38,8 @@ angular.module('ieecloud-editor', [
 
     .constant('IE_EVENTS', {
         'ON_TREE_LOAD': 'ON_TREE_LOAD',
-        'ON_SELECT_NODE': 'ON_SELECT_NODE'
+        'ON_SELECT_NODE': 'ON_SELECT_NODE',
+        'RENDER_MODEL': 'renderModel'
     })
 
 
