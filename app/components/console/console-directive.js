@@ -2,7 +2,7 @@
 
 angular.module('ieecloud-editor.console.console-directive', [])
 
-    .directive('console', ['consoleApi', '$stateParams', 'actionsRetryQueue', 'cmdMapping',
+    .directive('ieeConsole', ['consoleApi', '$stateParams', 'actionsRetryQueue', 'cmdMapping',
         function (consoleApiProvider, $stateParams, actionsRetryQueue, cmdMapping) {
         return {
             restrict: 'EA',
