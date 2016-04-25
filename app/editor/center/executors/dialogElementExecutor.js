@@ -1,17 +1,19 @@
-angular.module('ieecloud-editor.editor.viewer').controller('dialogElementExecutor', ['$scope', '$uibModal', '$log', function ($scope, $uibModal, $log) {
+angular.module('ieecloud-editor.editor.viewer').controller('dialogElementExecutor', ['$scope', '$mdDialog', '$log', function ($scope, $mdDialog, $log) {
         $scope.execute = function () {
-            var modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: 'elementsModalContent.html',
-                controller: 'ModalElementInstanceCtrl'
-            });
-
-            modalInstance.result.then(function (doubleValue) {
+            var confirm = $mdDialog.prompt()
+                .title('Select Element Dialog')
+                .placeholder('Enter')
+                .ariaLabel('Double value')
+                .ok('Ok')
+                .cancel('Cancel')
+                .openFrom('#cmd-list')
+                .closeTo(angular.element(document.querySelector('#cmd-list')));
+            $mdDialog.show(confirm).then(function(result) {
                 $scope.consoleControl.setCmdParams({
                     cmdType: $scope.cmdType,
-                    point: doubleValue
+                    point: result
                 });
-            }, function () {
+            }, function() {
                 $log.info('Modal dismissed at: ' + new Date());
             });
         };

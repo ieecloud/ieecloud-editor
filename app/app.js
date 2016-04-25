@@ -2,6 +2,7 @@
 
 // Declare app level module which depends on views, and components
 angular.module('ieecloud-editor', [
+        'ngMaterial',
         'ieecloud-editor.filters',
         'ieecloud-editor.services',
         'ieecloud-editor.utils',
@@ -13,6 +14,7 @@ angular.module('ieecloud-editor', [
         'ngCookies',
         'ui.bootstrap',
         'ui.tree',
+        'ieecloud-fm',
         'ieecloud-editor.editor'
     ])
 
@@ -25,6 +27,7 @@ angular.module('ieecloud-editor', [
         'ELEMENT': "\"{{this}}\"",
         'MATERIAL': "{{this}}",
         'SAVE': "d.save()",
+        'MATERIAL_NAME': '"{{this}}"',
         'MESH_SIZE': "d.setMeshSize({{this}})",
         'MESH': "d.mesh()"
     })
@@ -32,6 +35,7 @@ angular.module('ieecloud-editor', [
     .constant('SERVICE.MAPPING', {
         'ruler': 'ruler',
         'dialog_double': 'dialogDouble',
+        'file_manager': 'bottomFm',
         'tree': 'tree',
         'dialog_element': 'dialogElement'
     })
@@ -43,9 +47,9 @@ angular.module('ieecloud-editor', [
     })
 
 
-    .config(function ieeEditorConfig($stateProvider, $urlRouterProvider, consoleApiProvider) {
-
-        consoleApiProvider.setBaseUrl("http://10.66.13.144:8001");
+    .config(function ieeEditorConfig($stateProvider, $urlRouterProvider, consoleApiProvider, $mdThemingProvider) {
+        $mdThemingProvider.theme('default');
+        consoleApiProvider.setBaseUrl("http://eprupetw6356:8001");
 
         $urlRouterProvider.otherwise('/editor');
     }).run(function ($rootScope) {

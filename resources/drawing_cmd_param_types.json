@@ -28,6 +28,13 @@
     "mode": "3d_faces_and_edges"
   },
   {
+    "id": "MATERIAL_NAME",
+    "name": "materialName",
+    "description": "Material Name",
+    "tools": ["file_manager"],
+    "mode": "3d_faces_and_edges"
+  },
+  {
     "id": "ELEMENT",
     "name": "element",
     "description": "Element",

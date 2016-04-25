@@ -23,6 +23,7 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
                     $scope.$watch('model', function (model) {
                         if (model) {
                             $($element).ieecloudEditor('reloadModel', model);
+                            $($element).ieecloudEditor('resize');
                         }
                     });
 

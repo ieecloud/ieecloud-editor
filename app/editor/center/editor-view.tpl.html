@@ -1,85 +1,65 @@
-<script type="text/ng-template" id="myModalContent.html">
-    <div class="modal-header">
-        <h3 class="modal-title">Double Dialog</h3>
-    </div>
-    <div class="modal-body">
-        <input type="text" class="form-control"  ng-model="doubleValue" placeholder="Enter"/>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-    </div>
-</script>
-
-<!-- Nested node template -->
 <script type="text/ng-template" id="editor_nodes_renderer.html">
 
     <div ui-tree-handle="" class="tree-node tree-node-content ng-scope ng-binding angular-ui-tree-handle">
-        <!-- ngIf: node.nodes && node.nodes.length > 0 --><a class="btn btn-success btn-xs ng-scope" ng-if="node.nodes &amp;&amp; node.nodes.length > 0" data-nodrag="" ng-click="toggle(this)"><span class="glyphicon glyphicon-chevron-down" ng-class="{
+        <!-- ngIf: node.nodes && node.nodes.length > 0 --><a class="btn btn-success btn-xs ng-scope"
+                                                             ng-if="node.nodes &amp;&amp; node.nodes.length > 0"
+                                                             data-nodrag="" ng-click="toggle(this)"><span
+            class="glyphicon glyphicon-chevron-down" ng-class="{
           'glyphicon-chevron-right': collapsed,
           'glyphicon-chevron-down': !collapsed
         }"></span></a><!-- end ngIf: node.nodes && node.nodes.length > 0 -->
         {{node.title}}
     </div>
 
-    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}" class="ng-pristine ng-untouched ng-valid ng-scope angular-ui-tree-nodes">
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}"
+        class="ng-pristine ng-untouched ng-valid ng-scope angular-ui-tree-nodes">
         <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'editor_nodes_renderer.html'">
         </li>
     </ol>
 </script>
 
-<script type="text/ng-template" id="elementsModalContent.html">
-    <div class="modal-header">
-        <h3 class="modal-title">Select Element Dialog</h3>
-    </div>
 
-    <div class="modal-body">
-        <input type="text" class="form-control"  ng-model="strValue" placeholder="Enter" required="" autofocus=""/>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-    </div>
+<script type="text/ng-template" id="file-manager-template.html">
 
+    <md-bottom-sheet ng-cloak md-disable-backdrop = "true" style="padding-left: 0px;padding-right: 0px; padding-top: 0px;height: 60%;">
+            <md-content flex>
+                <ieecloud-fm on-select-file="selectFile(item)"></ieecloud-fm>
+            </md-content>
+    </md-bottom-sheet>
 </script>
 
 
+<md-toolbar layout="row" class="md-whiteframe-z1 editor-content-toolbar" >
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap ng-show="readOnly">
+        <md-button class="md-fab md-primary md-mini" ng-click="editMode()">
+            <md-icon  class="material-icons" >
+                border_color
+            </md-icon>
+        </md-button>
+    </section>
 
-<div class="panel panel-default" style="border-radius: 0px;">
-    <div class="panel-heading" style="background-color:transparent;">
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap ng-show="!readOnly" style="padding-left: 320px;">
+        <md-button class="md-raised" ng-click="toggleTree()">Toggle Tree</md-button>
+        <md-button class="md-raised" ng-click="toggleCmd()">Toggle Right</md-button>
+        <md-button class="md-raised" ng-click="addRuler()">Ruler</md-button>
+        <md-button class="md-raised" ng-click="showVProtractor()">Protractor V</md-button>
+        <md-button class="md-raised" ng-click="showHProtractor()">Protractor H</md-button>
+        <md-button class="md-raised" ng-click="meshModel()">Mesh</md-button>
+        <md-button class="md-raised" ng-click="saveModel()">Save</md-button>
+        <md-select class="mode-select" ng-if="!readOnly" ng-model="currentMode" ng-change="setMode(currentMode)">
+            <md-option ng-repeat="mode in modes" value="{{mode.key}}">
+                {{mode.label}}
+            </md-option>
+        </md-select>
 
-        <i class="fa fa-edit" style="font-size:2em;" ng-if="readOnly" ng-click="editMode()"></i>
+    </section>
+</md-toolbar>
 
-        <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="toggleTree()">Toggle Tree</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="addRuler()">Ruler</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="showVProtractor()">Protractor V</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="showHProtractor()">Protractor H</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="meshModel()">Mesh</button>
-        <button type="button" class="btn btn-primary btn-sm" ng-if="!readOnly" ng-click="saveModel()">Save</button>
-
-
-        <!-- Split button -->
-        <div class="btn-group" dropdown  ng-if="!readOnly">
-            <button id="split-button" type="button" class="btn btn-primary btn-sm">Mode</button>
-            <button type="button" ng-disabled="changeModeBtnDisabled || readOnly"  class="btn btn-primary btn-sm" dropdown-toggle>
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="split-button">
-                <li role="menuitem" ng-repeat="mode in modes">
-                    <a ng-click="setMode(mode.key)" class="pointer" ng-bind="mode.label"></a>
-                </li>
-            </ul>
-        </div>
+<md-content flex id="content">
+    <div viewer model="model" class="viewer-section" control="viewerControl" id="{{id}}" on-tree-load="onTreeLoad(tree)"
+         on-select-object="onSelectNode(node, selected)"
+         on-start-render="startRender()"
+         on-end-render="endRender()"
+         on-select-3d-point="pointSelected(point)">
     </div>
-
-
-
-    <div class="panel-body padding-none">
-        <div viewer model="model" class="viewer-section"  control="viewerControl" id="{{id}}" on-tree-load="onTreeLoad(tree)"
-             on-select-object="onSelectNode(node, selected)"
-             on-start-render="startRender()"
-             on-end-render="endRender()"
-             on-select-3d-point="pointSelected(point)">
-        </div>
-    </div>
-</div>
+</md-content>

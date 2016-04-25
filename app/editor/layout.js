@@ -51,8 +51,8 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
         });
     }])
 
-    .controller('EditorCtrl', ['$scope', '$rootScope', 'cmdMapping', 'IE_EVENTS', 'actionsRetryQueue','commonExecutor', 'cmdParamTypes',
-        function ($scope, $rootScope, cmdMapping, IE_EVENTS, actionsRetryQueue , commonExecutor, cmdParamTypes) {
+    .controller('EditorCtrl', ['$scope', '$rootScope', 'cmdMapping', 'IE_EVENTS', 'actionsRetryQueue','commonExecutor', 'cmdParamTypes', '$mdSidenav', '$log',
+        function ($scope, $rootScope, cmdMapping, IE_EVENTS, actionsRetryQueue , commonExecutor, cmdParamTypes, $mdSidenav, $log) {
 
             var init = function () {
                 $scope.paramTypes = cmdParamTypes;
@@ -60,8 +60,40 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 $scope.consoleControl = {};
                 $scope.readOnly = true;
                 $scope.currentCmd = null;
+                //$scope.currentMode = '';
+
             };
 
+
+            $scope.toggleTree = buildToggler('left');
+            $scope.showTree = buildOpenSideNav('left');
+            $scope.toggleCmd = buildToggler('right');
+            $scope.isOpenLeft = function(){
+                return $mdSidenav('left').isOpen();
+            };
+
+            function buildToggler(navID) {
+                return function() {
+                    // Component lookup should always be available since we are not using `ng-if`
+                    $mdSidenav(navID)
+                        .toggle()
+                        .then(function () {
+                            $log.debug("toggle " + navID + " is done");
+                            //$scope.viewerControl.resizeViewer();
+                        });
+                }
+            }
+
+            function buildOpenSideNav(navID) {
+                return function() {
+                    // Component lookup should always be available since we are not using `ng-if`
+                    $mdSidenav(navID)
+                        .open()
+                        .then(function(){
+                            $log.debug('opened');
+                        });
+                }
+            }
 
             var processCoordinate = function () {
                 var param = $scope.params.shift();
@@ -118,30 +150,12 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 $scope.viewerControl.showHProtractor('true');
             };
 
-            $scope.toggleTree = function () {
-                var $wrapper = $("#wrapper");
-                $wrapper.toggleClass("toggled");
-                $wrapper.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
-                    function () {
-                        $scope.viewerControl.resizeViewer();
-                    });
-            };
-
-            $scope.showTree = function () {
-                var $wrapper = $("#wrapper");
-                $wrapper.removeClass("toggled");
-                $wrapper.one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
-                    function () {
-                        $scope.viewerControl.resizeViewer();
-                    });
-            };
-
             $scope.onTreeLoad = function (tree) {
                 $rootScope.$broadcast(IE_EVENTS.ON_TREE_LOAD, tree);
             };
 
-            $scope.setMode = function (modeKey) {
-                $scope.viewerControl.setMode(modeKey);
+            $scope.setMode = function (currentMode) {
+                $scope.viewerControl.setMode(currentMode);
             };
             init();
 

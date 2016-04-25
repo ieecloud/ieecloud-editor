@@ -35,6 +35,8 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
                     selectTreeNodeObject();
                 });
 
+                //$scope.viewerControl.resizeViewer();
+
             };
             // fires when user select in viewer
             $scope.onSelectNode = function (node, select) {

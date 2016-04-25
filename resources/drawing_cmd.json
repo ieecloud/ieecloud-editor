@@ -4,7 +4,7 @@
     "name": "box",
     "description": "Draw box with current cursor and dimensions dx dy dz",
     "visible": true,
-    "iconClazz": "fa-cube",
+    "iconClazz": "check_box_outline_blank",
     "action": {
       "type": "drawing",
       "name": "editorAPI",
@@ -20,7 +20,7 @@
     "id": 2,
     "name": "circle",
     "description": "circle",
-    "iconClazz": "fa-circle-o",
+    "iconClazz": "radio_button_unchecked",
     "visible": true,
     "action": {
       "type": "drawing",
@@ -37,7 +37,7 @@
     "id": 3,
     "name": "line",
     "description": "line",
-    "iconClazz": "fa-arrows-h",
+    "iconClazz": "trending_flat",
     "visible": true,
     "action": {
       "type": "drawing",
@@ -54,7 +54,7 @@
     "id": 5,
     "name": "cylinder",
     "description": "cylinder",
-    "iconClazz": "fa-battery-empty",
+    "iconClazz": "battery_full",
     "visible": true,
     "action": {
       "type": "drawing",
@@ -72,7 +72,7 @@
     "id": 6,
     "name": "remove",
     "description": "remove",
-    "iconClazz": "fa-times",
+    "iconClazz": "close",
     "visible": true,
     "action": {
       "type": "drawing",
@@ -88,7 +88,7 @@
     "id": 7,
     "name": "setElements",
     "description": "setElements",
-    "iconClazz": "fa-internet-explorer",
+    "iconClazz": "blur_on",
     "visible": true,
     "action": {
       "type": "drawing",
@@ -106,15 +106,14 @@
     "id": 8,
     "name": "setMaterial",
     "description": "setMaterial",
-    "iconClazz": "fa-maxcdn",
+    "iconClazz": "widgets",
     "visible": true,
     "action": {
       "type": "drawing",
       "name": "editorAPI",
       "method": "setMaterial",
       "params": [
-        "OBJECT_NAME",
-        "ELEMENT"
+        "MATERIAL_NAME"
       ]
     },
     "preview": ""

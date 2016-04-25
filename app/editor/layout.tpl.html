@@ -1,21 +1,47 @@
-<div class="row" style="margin-top: 15px;">
-    <div id="wrapper" class="toggled">
+<md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2 "
+            md-component-id="left"
+            md-disable-backdrop = "true" >
 
-        <div id="sidebar-wrapper" ng-style="sidebarStyle">
-            <div ui-view="left"></div>
-        </div>
 
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-9">
-                        <div ui-view="center"></div>
-                    </div>
-                    <div class="col-md-3">
-                        <div ui-view="right"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <md-toolbar class="md-whiteframe-z1 editor-content-toolbar">
+
+
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap style="padding-top:10px;">
+            <h3>Content</h3>
+            <md-button class="md-icon-button" ng-click="toggleTree()">
+                <md-icon  class="material-icons" style="color: rgba(0, 0, 0, 0.54);">
+                  close
+                </md-icon>
+            </md-button>
+        </section>
+    </md-toolbar>
+
+
+    <md-content flex>
+        <div ui-view="left"></div>
+    </md-content>
+
+</md-sidenav>
+
+<div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z1" ui-view="center"></div>
+
+<md-sidenav class="site-sidenav md-sidenav-right md-whiteframe-z3"
+            md-component-id="right" md-disable-backdrop = "true" md-is-open="true">
+
+
+    <md-toolbar class="md-whiteframe-z1 editor-content-toolbar">
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap  style="padding-top:10px;">
+            <h3>Commands</h3>
+            <md-button class="md-icon-button" ng-click="toggleCmd()">
+                <md-icon  class="material-icons" style="color: rgba(0, 0, 0, 0.54);">
+                    close
+                </md-icon>
+            </md-button>
+        </section>
+    </md-toolbar>
+
+    <md-content flex>
+        <div ui-view="right"></div>
+    </md-content>
+
+</md-sidenav>
