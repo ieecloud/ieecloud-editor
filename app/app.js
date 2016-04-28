@@ -49,7 +49,7 @@ angular.module('ieecloud-editor', [
 
     .config(function ieeEditorConfig($stateProvider, $urlRouterProvider, consoleApiProvider, $mdThemingProvider) {
         $mdThemingProvider.theme('default');
-        consoleApiProvider.setBaseUrl("http://store-grf.ieecloud.com:8001");
+        consoleApiProvider.setBaseUrl("https://editorgrf.server.ieecloud.com");
 
         $urlRouterProvider.otherwise('/editor');
     }).run(function ($rootScope) {
