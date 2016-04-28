@@ -76,7 +76,7 @@ angular.module('ieecloud-editor.security.service', [
                     return $q.when(service.currentUser);
                 } else {
                     return $http.get(urlHelper.getStoreUrl('/current-user')).then(function (response) {
-                        service.currentUser = response.data.user;
+                        service.currentUser = response.data;
                         return service.currentUser;
                     });
                 }
