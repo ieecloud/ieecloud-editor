@@ -19,6 +19,9 @@
 </script>
 
 
+
+
+
 <script type="text/ng-template" id="file-manager-template.html">
 
     <md-bottom-sheet ng-cloak md-disable-backdrop = "true" style="padding-left: 0px;padding-right: 0px; padding-top: 0px;height: 60%;">
@@ -29,7 +32,7 @@
 </script>
 
 
-<md-toolbar layout="row" class="md-whiteframe-z1 editor-content-toolbar" >
+<md-toolbar layout="row" class="md-whiteframe-z1 editor-content-toolbar">
     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap ng-show="readOnly">
         <md-button class="md-fab md-primary md-mini" ng-click="editMode()">
             <md-icon  class="material-icons" >
@@ -37,6 +40,7 @@
             </md-icon>
         </md-button>
     </section>
+
 
     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap ng-show="!readOnly" style="padding-left: 320px;">
         <md-button class="md-raised" ng-click="toggleTree()">Toggle Tree</md-button>
@@ -53,7 +57,119 @@
         </md-select>
 
     </section>
+    <span flex></span>
+    <login-toolbar></login-toolbar>
+
 </md-toolbar>
+
+
+<!--<md-toolbar class="md-menu-toolbar">-->
+    <!--<div layout="row">-->
+        <!--<div ng-show="readOnly">-->
+            <!--<md-button class="md-fab md-primary md-mini" ng-click="editMode()">-->
+                <!--<md-icon  class="material-icons" >-->
+                    <!--border_color-->
+                <!--</md-icon>-->
+            <!--</md-button>-->
+        <!--</div>-->
+        <!--<div ng-show="!readOnly">-->
+            <!--<div layout="row">-->
+            <!--<md-menu-bar style="padding: 10px 10px 0px 340px;">-->
+                <!--<md-menu>-->
+                    <!--<button ng-click="$mdOpenMenu()">-->
+                        <!--File-->
+                    <!--</button>-->
+                    <!--<md-menu-content>-->
+                        <!--<md-menu-item>-->
+                            <!--<md-button ng-click="saveModel()">-->
+                                <!--<md-icon class="material-icons">save</md-icon>-->
+                                <!--Save-->
+                            <!--</md-button>-->
+                        <!--</md-menu-item>-->
+                    <!--</md-menu-content>-->
+                <!--</md-menu>-->
+                <!--<md-menu>-->
+                    <!--<button ng-click="$mdOpenMenu()">-->
+                        <!--View-->
+                    <!--</button>-->
+                    <!--<md-menu-content>-->
+                        <!--<md-menu-item class="md-indent">-->
+                            <!--<md-menu>-->
+                                <!--<md-button ng-click="$mdOpenMenu()">Mode</md-button>-->
+                                <!--<md-menu-content width="3">-->
+                                    <!--<md-menu-item type="radio" ng-repeat="mode in modes" ng-model="currentMode"-->
+                                                  <!--ng-change="setMode(currentMode)" value="{{mode.key}}">{{mode.label}}-->
+                                    <!--</md-menu-item>-->
+                                <!--</md-menu-content>-->
+                            <!--</md-menu>-->
+                        <!--</md-menu-item>-->
+                        <!--<md-menu-divider></md-menu-divider>-->
+                        <!--<md-menu-item type="checkbox" ng-model="settings.showRuler" ng-click="toggleTree()">Show-->
+                            <!--tree-->
+                        <!--</md-menu-item>-->
+                        <!--<md-menu-item type="checkbox" ng-model="settings.showEquationToolbar"-->
+                                      <!--ng-click="toggleCmd()">Show commands-->
+                        <!--</md-menu-item>-->
+                    <!--</md-menu-content>-->
+                <!--</md-menu>-->
+                <!--<md-menu>-->
+                    <!--<button ng-click="$mdOpenMenu()">-->
+                        <!--Tools-->
+                    <!--</button>-->
+                    <!--<md-menu-content>-->
+                        <!--<md-menu-item type="checkbox" ng-model="settings.showRuler" ng-click="addRuler()">Ruler-->
+                        <!--</md-menu-item>-->
+                        <!--<md-menu-item type="checkbox" ng-model="settings.showEquationToolbar"-->
+                                      <!--ng-click="showVProtractor()">Protractor V-->
+                        <!--</md-menu-item>-->
+                        <!--<md-menu-item type="checkbox" ng-model="settings.showSpellingSuggestions"-->
+                                      <!--ng-click="showHProtractor()">Protractor H-->
+                        <!--</md-menu-item>-->
+                    <!--</md-menu-content>-->
+                <!--</md-menu>-->
+                <!--<md-menu>-->
+                    <!--<button ng-click="$mdOpenMenu()">-->
+                        <!--Actions-->
+                    <!--</button>-->
+                    <!--<md-menu-content>-->
+                        <!--<md-menu-item type="checkbox" ng-model="settings.showRuler" ng-click="meshModel()">Mesh-->
+                        <!--</md-menu-item>-->
+                    <!--</md-menu-content>-->
+                <!--</md-menu>-->
+            <!--</md-menu-bar>-->
+            <!--<span flex></span>-->
+                <!--&lt;!&ndash;<login-toolbar></login-toolbar>&ndash;&gt;-->
+            <!--&lt;!&ndash;<md-fab-toolbar md-open="true" count="demo.count"&ndash;&gt;-->
+                            <!--&lt;!&ndash;md-direction="left">&ndash;&gt;-->
+                <!--&lt;!&ndash;<md-fab-trigger class="align-with-text">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<md-button aria-label="menu" class="md-fab md-primary md-mini">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-icon  class="material-icons" >&ndash;&gt;-->
+                            <!--&lt;!&ndash;border_color&ndash;&gt;-->
+                        <!--&lt;!&ndash;</md-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</md-button>&ndash;&gt;-->
+                <!--&lt;!&ndash;</md-fab-trigger>&ndash;&gt;-->
+                <!--&lt;!&ndash;<md-toolbar>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<md-fab-actions class="md-toolbar-tools">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-button aria-label="comment" class="md-icon-button">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<md-icon md-svg-src="img/icons/ic_comment_24px.svg"></md-icon>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</md-button>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-button aria-label="label" class="md-icon-button">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<md-icon md-svg-src="img/icons/ic_label_24px.svg"></md-icon>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</md-button>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-button aria-label="photo" class="md-icon-button">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<md-icon md-svg-src="img/icons/ic_photo_24px.svg"></md-icon>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</md-button>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</md-fab-actions>&ndash;&gt;-->
+                <!--&lt;!&ndash;</md-toolbar>&ndash;&gt;-->
+            <!--&lt;!&ndash;</md-fab-toolbar>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</md-toolbar>-->
+
+
+
+
 
 <md-content flex id="content">
     <div viewer model="model" class="viewer-section" control="viewerControl" id="{{id}}" on-tree-load="onTreeLoad(tree)"

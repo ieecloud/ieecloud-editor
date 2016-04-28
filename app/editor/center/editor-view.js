@@ -35,6 +35,12 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
                     selectTreeNodeObject();
                 });
 
+                $scope.settings = {
+                    showTree: false
+                };
+
+
+
                 //$scope.viewerControl.resizeViewer();
 
             };

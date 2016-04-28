@@ -21,9 +21,11 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                     templateUrl: 'editor/center/editor-view.tpl.html',
                     resolve : {
                         model : function($stateParams, modelService){
-                            return modelService.loadModel($stateParams.wsoUuid, $stateParams.wsoVersion, $stateParams.pad).then(function(response) {
-                                return response.data;
-                            });
+                            //return modelService.loadModel($stateParams.wsoUuid, $stateParams.wsoVersion, $stateParams.pad).then(function(response) {
+                            //    return response.data;
+                            //});
+
+                            return {};
                         }
                     }
                 },
@@ -155,6 +157,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
             };
 
             $scope.setMode = function (currentMode) {
+                $scope.currentMode = currentMode;
                 $scope.viewerControl.setMode(currentMode);
             };
             init();

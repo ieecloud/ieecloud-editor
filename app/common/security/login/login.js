@@ -1,0 +1,1 @@
+angular.module('ieecloud-editor.security.login', ['ieecloud-editor.security.login.form', 'ieecloud-editor.security.login.toolbar']);

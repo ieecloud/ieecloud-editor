@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('ieecloud-editor', [
         'ngMaterial',
+        'ieecloud-editor.security',
         'ieecloud-editor.filters',
         'ieecloud-editor.services',
         'ieecloud-editor.utils',
@@ -47,12 +48,19 @@ angular.module('ieecloud-editor', [
     })
 
 
-    .config(function ieeEditorConfig($stateProvider, $urlRouterProvider, consoleApiProvider, $mdThemingProvider) {
+    .config(function ieeEditorConfig($stateProvider, $urlRouterProvider, consoleApiProvider, $mdThemingProvider, $httpProvider) {
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
+
+
+        $httpProvider.defaults.xsrfHeaderName = 'X-XSRF-TOKEN';
+        $httpProvider.defaults.withCredentials = true;
+
         $mdThemingProvider.theme('default');
-        consoleApiProvider.setBaseUrl("http://eprupetw6356:8001");
+        consoleApiProvider.setBaseUrl("https://egrfs.ieecloud.com");
 
         $urlRouterProvider.otherwise('/editor');
-    }).run(function ($rootScope) {
-    $rootScope.readOnly = true;
+    }).run(function ($rootScope, security, $state, $http, urlHelper) {
+           security.requestCurrentUser();
+           $rootScope.readOnly = false;
 });
 
