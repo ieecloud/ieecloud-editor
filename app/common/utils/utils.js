@@ -3,7 +3,7 @@ angular.module('ieecloud-editor.utils', [])
     .factory('urlHelper', ['$state', /*'apiRoot',*/  function($state/*, apiRoot*/) {
         return {
             getApiUrl: function(url) {
-                return 'http://eprupetw6356:9000' + url;
+                return 'https://store-grf.ieecloud.com' + url;
             }
         };
     }]);
