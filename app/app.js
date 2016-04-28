@@ -48,8 +48,13 @@ angular.module('ieecloud-editor', [
     })
 
 
-    .config(function ieeEditorConfig($stateProvider, $urlRouterProvider, consoleApiProvider, $mdThemingProvider, $httpProvider) {
+    .config(function ieeEditorConfig($stateProvider, $urlRouterProvider, consoleApiProvider, $mdThemingProvider, $httpProvider, fileManagerConfigProvider) {
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
+
+        fileManagerConfigProvider.set({
+            listUrl: 'https://store-grf.ieecloud.com/api/jsonws/fm/listUrl',
+            siteListUrl: 'https://store-grf.ieecloud.com/api/jsonws/site/list'
+        });
 
 
         $httpProvider.defaults.xsrfHeaderName = 'X-XSRF-TOKEN';
