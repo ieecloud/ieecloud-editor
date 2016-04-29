@@ -53,7 +53,21 @@ angular.module('ieecloud-editor', [
 
         fileManagerConfigProvider.set({
             listUrl: 'https://store-grf.ieecloud.com/api/jsonws/fm/listUrl',
-            siteListUrl: 'https://store-grf.ieecloud.com/api/jsonws/site/list'
+            siteListUrl: 'https://store-grf.ieecloud.com/api/jsonws/site/list',
+            allowedActions: {
+                createFolder: false,
+                upload: false,
+                rename: false,
+                copy: false,
+                edit: false,
+                changePermissions: false,
+                compress: false,
+                compressChooseName: false,
+                extract: false,
+                download: false,
+                preview: true,
+                remove: false
+            }
         });
 
 
