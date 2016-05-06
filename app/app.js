@@ -67,6 +67,10 @@ angular.module('ieecloud-editor', [
                 download: false,
                 preview: true,
                 remove: false
+            },
+            cssClasses: {
+                iconsPanelClass: 'icons-panel-class',
+                sideBarPanelClass: 'side-bar'
             }
         });
 

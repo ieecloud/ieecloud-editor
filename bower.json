@@ -20,7 +20,7 @@
     "html5-boilerplate": "~5.2.0",
     "angular-ui-tree": "~2.9.0",
     "ieecloud-viewer.js": "44d5ce4",
-    "ieecloud-fm": "14ff41b",
+    "ieecloud-fm": "23fbdc2",
     "lodash": "~4.0.0"
   },
   "resolutions": {

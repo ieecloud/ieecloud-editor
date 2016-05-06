@@ -23,6 +23,14 @@ body {
     overflow: hidden; /*better to decide how you want to handle this than to let the browser decide*/
 }
 
+.icons-panel-class{
+    height: 377px;
+}
+
+.side-bar{
+    height: 415px;;
+}
+
 
 
 .editor-content-toolbar {
