@@ -31,6 +31,10 @@ body {
     height: 415px;;
 }
 
+.md-scroll-mask{
+    position: initial;
+}
+
 
 
 .editor-content-toolbar {

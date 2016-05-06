@@ -7,7 +7,7 @@ angular.module('ieecloud-editor.editor.viewer').controller('bottomFmExecutor', [
             templateUrl: 'file-manager-template.html',
             controller: 'GridBottomSheetCtrl',
             clickOutsideToClose: false,
-            disableBackdrop:true
+            //disableBackdrop:true
         }).then(function(clickedItem) {
             $mdToast.show(
                 $mdToast.simple()
@@ -15,8 +15,6 @@ angular.module('ieecloud-editor.editor.viewer').controller('bottomFmExecutor', [
                     .position('top right')
                     .hideDelay(1500)
             );
-
-
             $scope.consoleControl.setCmdParams({
                 cmdType: $scope.cmdType,
                 point: clickedItem['name']
