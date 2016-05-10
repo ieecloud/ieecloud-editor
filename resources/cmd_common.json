@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "box",
+    "params": [
+      {"cursor": "Coordinate"},
+      {"coordinate": "Coordinate"}
+    ],
+    "description": "box",
+    "iconClazz": "fa-cube"
+  },
+  {
+    "id": 2,
+    "name": "circle",
+    "params": [
+      {"cursor": "Coordinate"},
+      {"coordinate": "Coordinate"}
+    ],
+    "description": "circle",
+    "iconClazz": "fa-circle-o"
+  },
+  {
+    "id": 3,
+    "name": "line",
+    "params": [
+      {"cursor": "Coordinate"},
+      {"coordinate": "Coordinate"}
+    ],
+    "description": "circle",
+    "iconClazz": "fa-arrows-h"
+  }
+]

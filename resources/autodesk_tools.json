@@ -1,0 +1,424 @@
+{
+  "UNDO": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "UNDO"
+    }
+  },
+  "REDO": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "REDO"
+    }
+  },
+  "PAN": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "internalToolId": "PAN_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "PAN"
+    }
+  },
+  "ZOOM_EXTENTS": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "internalToolId": "ZOOM_EXTENTS_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "setZoomTool",
+      "argument": "EXTENTS"
+    }
+  },
+  "ZOOM_WINDOW": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "internalToolId": "ZOOM_WINDOW_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "setZoomTool",
+      "argument": "WINDOW"
+    }
+  },
+  "ZOOM_IN": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "internalToolId": "ZOOM_IN_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "setZoomTool",
+      "argument": "IN"
+    }
+  },
+  "ZOOM_OUT": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "internalToolId": "ZOOM_OUT_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "setZoomTool",
+      "argument": "OUT"
+    }
+  },
+  "SHEET_NAVIGATION_NEXT": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "action": {
+      "type": "service",
+      "name": "layoutsService",
+      "method": "next"
+    },
+    "disabledState": {
+      "name": "layoutsService",
+      "method": "isNextDisabled"
+    }
+  },
+  "SHEET_NAVIGATION_PREVIOUS": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "action": {
+      "type": "service",
+      "name": "layoutsService",
+      "method": "previous"
+    },
+    "disabledState": {
+      "name": "layoutsService",
+      "method": "isPreviousDisabled"
+    }
+  },
+  "VIEWMODES": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "action": {
+      "type": "popup",
+      "name": "ac_viewModesDrawer",
+      "template": "<ac-view-modes id='ac_viewModes'/>"
+    }
+  },
+  "GRID": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "action": {
+      "type": "popup",
+      "name": "ac_gridSettingsDrawer",
+      "template": "<ac-grid-settings id='ac_gridSettings'/>"
+    }
+  },
+  "UNITS": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "action": {
+      "type": "popup",
+      "name": "ac_unitsSettingsDrawer",
+      "template": "<ac-units-settings id='ac_unitsSettings'/>"
+    },
+    "dynamic": true
+  },
+  "OSNAP": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "action": {
+      "type": "popup",
+      "name": "ac_osnapSettingsDrawer",
+      "template": "<ac-osnap-settings id='ac_osnapSettings'/>"
+    }
+  },
+  "ALIGN": {
+    "imagePrefix": "editor_icons-",
+    "imageSize": "small",
+    "action": {
+      "type": "popup",
+      "name": "ac_alignmentSettingsDrawer",
+      "template": "<ac-alignment-settings id='ac_alignmentSettings'/>"
+    }
+  },
+  "SELECT_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "SELECT_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "SELECT"
+    }
+  },
+  "MOVE_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "MOVE_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "MOVE"
+    }
+  },
+  "ERASE_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "ERASE_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "ERASE"
+    }
+  },
+  "DRAW_LEADER_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "DRAW_LEADER_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "CALLOUT"
+    }
+  },
+  "MTEXT_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "MTEXT_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "MTEXT"
+    }
+  },
+  "NEW_MTEXT_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "NEW_MTEXT_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "NEWMTEXT"
+    }
+  },
+  "DRAW_CLOUD_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "DRAW_CLOUD_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "CLOUD"
+    }
+  },
+  "MEASURE_DISTANCE_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "MEASURE_DISTANCE_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "DISTANCE"
+    }
+  },
+  "MEASURE_AREA_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "MEASURE_AREA_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "AREA"
+    }
+  },
+  "NEW_MEASURE_AREA_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "NEW_MEASURE_AREA_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "NEWAREA"
+    }
+  },
+  "LINEAR_DIMENSION_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "LINEAR_DIMENSION_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "DIMLINEAR"
+    }
+  },
+  "TWO_POINT_LINEAR_DIMENSION_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "TWO_POINT_LINEAR_DIMENSION_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "DIMALISIMP"
+    }
+  },
+  "RADIUS_DIMENSION_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "RADIUS_DIMENSION_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "DIMRADIUS"
+    }
+  },
+  "DRAW_SINGLE_LINE_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "DRAW_SINGLE_LINE_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "SLINE"
+    }
+  },
+  "DRAW_POLYLINE_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "DRAW_POLYLINE_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "POLYLINE"
+    }
+  },
+  "DRAW_RECTANGLE_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "DRAW_RECTANGLE_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "REC"
+    }
+  },
+  "DRAW_CIRCLE_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "DRAW_CIRCLE_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "CIRCLE"
+    }
+  },
+  "DRAW_ELLIPSE_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "DRAW_ELLIPSE_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "ELLIPSE"
+    }
+  },
+  "BRUSH_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "BRUSH_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "SKETCH"
+    }
+  },
+  "DRAW_ARC_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "DRAW_ARC_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "ARC"
+    }
+  },
+  "MIRROR_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "MIRROR_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "MIRROR"
+    }
+  },
+  "OFFSET_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "OFFSET_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "OFFSET"
+    }
+  },
+  "QTRIM_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "QTRIM_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "QT"
+    }
+  },
+  "EXPLODE_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "EXPLODE_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "EXPLODE"
+    }
+  },
+  "MATCH_PROPERTIES_TOOL": {
+    "imagePrefix": "toolbox_icons-",
+    "imageSize": "medium",
+    "internalToolId": "MATCH_PROPERTIES_TOOL",
+    "action": {
+      "type": "service",
+      "name": "editorAPI",
+      "method": "executeCommand",
+      "argument": "MATCHPROP"
+    }
+  }
+}
