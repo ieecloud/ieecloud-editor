@@ -429,13 +429,11 @@
 
         // Scroll to the bottom of the view
         function scrollToBottom() {
-            if (jQuery.fn.jquery > "1.6") {
-                inner.prop({scrollTop: inner.prop("scrollHeight")});
+            if(history.length === 0){
+                return;
             }
-            else {
-                inner.attr({scrollTop: inner.attr("scrollHeight")});
-            }
-        };
+            $('.jquery-console-prompt-box:last')[0].scrollIntoView();
+        }
 
         function cancelExecution() {
             if (typeof config.cancelHandle == 'function') {
