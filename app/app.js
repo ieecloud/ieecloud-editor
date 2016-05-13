@@ -47,6 +47,12 @@ angular.module('ieecloud-editor', [
         'RENDER_MODEL': 'renderModel'
     })
 
+    .constant('modes', [
+        {label: '3d geometry', key: '3d_geometry'},
+        {label: '3d point', key: '3d_point'},
+        {label: 'faces and nodes', key: 'faces_and_nodes'}
+    ])
+
 
     .config(function ieeEditorConfig($stateProvider, $urlRouterProvider, consoleApiProvider, $mdThemingProvider, $httpProvider, fileManagerConfigProvider) {
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';

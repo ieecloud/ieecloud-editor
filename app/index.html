@@ -71,7 +71,7 @@
         <span style="padding-top: 13px;">{{currentUser.username}} </span>
         <div class="md-list-item-text" layout="row">
             <md-button ng-click="logout()" ng-show="isAuthenticated()">
-                Log out
+                <md-icon class="material-icons"><i class="material-icons">exit_to_app</i></md-icon>
             </md-button>
             <md-button ng-click="login()" ng-hide="isAuthenticated()">
                 Log in

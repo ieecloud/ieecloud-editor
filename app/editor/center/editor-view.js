@@ -2,11 +2,6 @@
 
 angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
 
-    .constant('modes', [
-        {label: '3d point', key: '3d_point'},
-        {label: '3d geometry', key: '3d_geometry'},
-        {label: 'faces and nodes', key: 'faces_and_nodes'}
-    ])
 
     .controller('EditorViewCtrl', ['$scope', '$rootScope', '$log',  'model', 'modes', 'IE_EVENTS',
         function ($scope, $rootScope, $log, model, modes, IE_EVENTS) {
@@ -34,14 +29,6 @@ angular.module('ieecloud-editor.editor.viewer', ['ui.router'])
                     changeModelListener();
                     selectTreeNodeObject();
                 });
-
-                $scope.settings = {
-                    showTree: false
-                };
-
-
-
-                //$scope.viewerControl.resizeViewer();
 
             };
             // fires when user select in viewer

@@ -59,8 +59,17 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 $scope.viewerControl = {};
                 $scope.consoleControl = {};
                 $scope.readOnly = true;
+                $scope.cmdRunning = false;
                 $scope.currentCmd = null;
-                //$scope.currentMode = '';
+
+                $scope.settings = {
+                    showTree: false,
+                    showCmd: true,
+                    showRuler: false,
+                    showVProtractor: false,
+                    showHProtractor: false,
+                    mode : '3d_geometry'
+                };
 
             };
 
@@ -78,8 +87,14 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                     $mdSidenav(navID)
                         .toggle()
                         .then(function () {
-                            $log.debug("toggle " + navID + " is done");
-                            //$scope.viewerControl.resizeViewer();
+                            if('left' === navID){
+                                $scope.settings.showTree =  !$scope.settings.showTree;
+                            }
+
+                            if('right' === navID){
+                                $scope.settings.showCmd =  !$scope.settings.showCmd;
+                            }
+
                         });
                 }
             }
@@ -108,7 +123,9 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                     actionsRetryQueue.pushRetryFn('start-process', processCoordinate, processCommand);
                 } else {
                     $scope.consoleControl.execCurrentCmd();
-                    $scope.changeModeBtnDisabled = false;
+                    $scope.cmdRunning = false;
+                    $scope.currentCmd = null;
+                    $scope.setMode('3d_geometry');
                 }
             };
 
@@ -120,7 +137,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 $scope.consoleControl.setCmd(cmd);
 
                 $scope.params = angular.copy($scope.currentCmd.action.params);
-                $scope.changeModeBtnDisabled = true;
+                $scope.cmdRunning = true;
                 processCommand();
             };
 
@@ -139,24 +156,39 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
             };
 
             $scope.addRuler = function () {
-                $scope.viewerControl.showRuler('true');
+                $scope.viewerControl.showRuler(true);
+            };
+
+            $scope.toggleRuler = function () {
+                $scope.settings.showRuler =  !$scope.settings.showRuler;
+                $scope.viewerControl.showRuler($scope.settings.showRuler);
             };
 
             $scope.showVProtractor = function () {
-                $scope.viewerControl.showVProtractor('true');
+                $scope.viewerControl.showVProtractor(true);
+            };
+
+            $scope.toggleVProtractor = function () {
+                $scope.settings.showVProtractor =  !$scope.settings.showVProtractor;
+                $scope.viewerControl.showVProtractor($scope.settings.showVProtractor);
             };
 
             $scope.showHProtractor = function () {
-                $scope.viewerControl.showHProtractor('true');
+                $scope.viewerControl.showHProtractor(true);
+            };
+
+            $scope.toggleHProtractor = function () {
+                $scope.settings.showHProtractor =  !$scope.settings.showHProtractor;
+                $scope.viewerControl.showHProtractor($scope.settings.showHProtractor);
             };
 
             $scope.onTreeLoad = function (tree) {
                 $rootScope.$broadcast(IE_EVENTS.ON_TREE_LOAD, tree);
             };
 
-            $scope.setMode = function (currentMode) {
-                $scope.currentMode = currentMode;
-                $scope.viewerControl.setMode(currentMode);
+            $scope.setMode = function (mode) {
+                $scope.settings.mode = mode;
+                $scope.viewerControl.setMode(mode);
             };
             init();
 

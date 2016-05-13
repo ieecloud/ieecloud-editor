@@ -37,16 +37,16 @@ angular.module('ieecloud-editor.viewer.viewer-directive', [])
                         $($element).ieecloudEditor('setMode', modeKey);
                     };
 
-                    self.internalControl.showRuler = function () {
-                        $($element).ieecloudEditor('showRuler', event);
+                    self.internalControl.showRuler = function (visible) {
+                        $($element).ieecloudEditor('showRuler', visible);
                     };
 
-                    self.internalControl.showVProtractor = function () {
-                        $($element).ieecloudEditor('showVProtractor', event);
+                    self.internalControl.showVProtractor = function (visible) {
+                        $($element).ieecloudEditor('showVProtractor', visible);
                     };
 
-                    self.internalControl.showHProtractor = function () {
-                        $($element).ieecloudEditor('showHProtractor', event);
+                    self.internalControl.showHProtractor = function (visible) {
+                        $($element).ieecloudEditor('showHProtractor', visible);
                     };
 
                     self.internalControl.selectObject = function (args) {
