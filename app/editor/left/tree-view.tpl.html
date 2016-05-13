@@ -2,12 +2,13 @@
 <script type="text/ng-template" id="nodes_renderer.html">
     <md-list-item ui-tree-handle class="tree-node-content" ng-click="selectNode(node, this)"
          ng-class="{'active' : isInclude(node)}">
-        <div class="collapse-action pull-left" data-nodrag  ng-click="$event.stopPropagation();toggle(this);" ng-if="node.children && node.children.length > 0">
+        <md-button class="collapse-action md-icon-button" data-nodrag  ng-click="$event.stopPropagation();toggle(this);" ng-if="node.children && node.children.length > 0">
             <md-icon  class="material-icons node-arrow-icon"  ng-class="{'rotate--90': collapsed}">
                 arrow_drop_down
             </md-icon>
-        </div>
-        <span class="margin-left-5" style="text-transform: lowercase;">{{node.name}}</span>
+
+        </md-button>
+        <span style="text-transform: lowercase;">{{node.name}}</span>
     </md-list-item>
     <ol ui-tree-nodes="" ng-model="node.children" ng-class="{hidden: collapsed}" ng-show="!collapsed">
         <li ng-repeat="node in node.children" ui-tree-node ng-include="'nodes_renderer.html'" ng-show="visible(node)">

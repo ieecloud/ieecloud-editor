@@ -298,6 +298,10 @@ code {
     color: #555;
 }
 
+.angular-ui-tree-nodes .angular-ui-tree-nodes {
+    padding-left: 52px;
+}
+
 .tree-node .fa {
 }
 
@@ -312,6 +316,8 @@ code {
 .collapse-action {
     box-shadow: none;
     outline: inherit;
+    margin:0 !important;
+    padding:0 !important;
 }
 
 .tree-handle {

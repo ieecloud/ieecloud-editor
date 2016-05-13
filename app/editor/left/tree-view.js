@@ -4,22 +4,6 @@ angular.module('ieecloud-editor.editor.tree', ['ui.router'])
 
     .controller('TreeViewCtrl', ['$scope', '$http', '$rootScope', '$log', 'IE_EVENTS', function ($scope, $http, $rootScope, $log, IE_EVENTS) {
 
-        $scope.remove = function (scope, $event) {
-            $event.stopPropagation();
-            scope.remove();
-        };
-
-        $scope.newSubItem = function (scope, $event) {
-            $event.stopPropagation();
-            var nodeData = scope.$modelValue;
-            nodeData.children.push({
-                id: nodeData.id * 10 + nodeData.children.length,
-                name: nodeData.name + '.' + (nodeData.children.length + 1),
-                children: []
-            });
-        };
-
-
         function findChildren(node, text, predicate) {
             var found = false;
             if (node.children && node.children.length > 0) {
@@ -33,7 +17,7 @@ angular.module('ieecloud-editor.editor.tree', ['ui.router'])
                 return found || predicate(node, text);
             }
             return found;
-        };
+        }
 
         $scope.visible = function (item) {
 
@@ -80,9 +64,6 @@ angular.module('ieecloud-editor.editor.tree', ['ui.router'])
         };
 
         $scope.selectNode = function (node) {
-
-            $log.info("You selected: ", node);
-
             if (_.includes($scope.selectedNodes, node)) {
                 removeNodeFromSelection(node);
                 traverseTree(node, function (child) {
@@ -103,6 +84,10 @@ angular.module('ieecloud-editor.editor.tree', ['ui.router'])
                         if (_.includes($scope.selectedNodes, child)) {
                             //$rootScope.$broadcast('selectObject', {node: child});
                             $scope.viewerControl.selectObject({node: child});
+                            $scope.consoleControl.setCmdParams({
+                                cmdType: $scope.cmdType,
+                                point: child.parentName
+                            });
                         }
                     });
                 }
@@ -118,6 +103,10 @@ angular.module('ieecloud-editor.editor.tree', ['ui.router'])
                 if (isAllParentChildSelected(parentNode)) {
                     $scope.selectedNodes.push(parentNode);
                     $scope.viewerControl.selectObject({node: parentNode});
+                    $scope.consoleControl.setCmdParams({
+                        cmdType: $scope.cmdType,
+                        point: parentNode.name
+                    });
                     return;
                 }
             }
@@ -128,6 +117,10 @@ angular.module('ieecloud-editor.editor.tree', ['ui.router'])
                 }
             });
             $scope.viewerControl.selectObject({node: node});
+            $scope.consoleControl.setCmdParams({
+                cmdType: $scope.cmdType,
+                point: node.parentName || node.name
+            });
 
         };
 
