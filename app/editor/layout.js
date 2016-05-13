@@ -156,6 +156,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
             };
 
             $scope.addRuler = function () {
+                $scope.settings.showRuler = true;
                 $scope.viewerControl.showRuler(true);
             };
 
