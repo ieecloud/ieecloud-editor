@@ -112,10 +112,14 @@ angular.module('ieecloud-editor.console.console-directive', [])
                 };
 
                 $scope.internalControl.setCmdParams = function (data) {
+
+                    if(!actionsRetryQueue.hasMore()){
+                        return;
+                    }
                     var currentCmd = controller.promptText();
                     var text = cmdMapping.get(data.cmdType.id, data.point);
 
-                    if(!text || !actionsRetryQueue.hasMore()){
+                    if(!text){
                         return;
                     }
 

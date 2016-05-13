@@ -124,6 +124,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 } else {
                     $scope.consoleControl.execCurrentCmd();
                     $scope.cmdRunning = false;
+                    $scope.viewerControl.showRuler(false);
                     $scope.currentCmd = null;
                     $scope.setMode('3d_geometry');
                 }
