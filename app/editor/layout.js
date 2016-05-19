@@ -23,6 +23,14 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                         model : function($stateParams, modelService){
                             return modelService.loadModel($stateParams.wsoUuid, $stateParams.wsoVersion, $stateParams.pad).then(function(response) {
                                 return response.data;
+                            }, function(){
+                                return {
+                                    "tree" : {"children" : []},
+                                    "pictureData" : [
+                                    ],
+                                    "minResult" : 0,
+                                    "maxResult" : 0
+                                }
                             });
                         }
                     }
@@ -134,6 +142,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 if ($scope.readOnly) {
                     return;
                 }
+                actionsRetryQueue.cancelAll();
                 $scope.currentCmd = cmd;
                 $scope.consoleControl.setCmd(cmd);
 
