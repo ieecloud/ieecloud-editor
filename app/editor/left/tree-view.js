@@ -166,7 +166,6 @@ angular.module('ieecloud-editor.editor.tree', ['ui.router'])
 
 
         var init = function () {
-            $scope.selectedNodes = [];
             var treeLoadListener = $scope.$on(IE_EVENTS.ON_TREE_LOAD, function (event, data) {
                 $scope.treeData = data.children;
             });

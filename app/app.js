@@ -24,6 +24,7 @@ angular.module('ieecloud-editor', [
         'NEW': 'com.ieecloud.fe.drawing.FEDrawing d = new com.ieecloud.fe.drawing.FEDrawing("{{wsoUuid}}", "{{wsoVersion}}", "{{pad}}")',
         'DOUBLE': '{{this}}',
         'OBJECT_NAME': '"{{this}}"',
+        'OBJECT_NAMES': '{{this}}',
         'COORDINATE': "new com.ieecloud.geometry.Coordinate({{x}}, {{y}}, {{z}})",
         'ELEMENT': "\"{{this}}\"",
         'MATERIAL': "{{this}}",
@@ -36,6 +37,7 @@ angular.module('ieecloud-editor', [
     .constant('SERVICE.MAPPING', {
         'ruler': 'ruler',
         'dialog_double': 'dialogDouble',
+        'list-of-objects': 'listObjects',
         'file_manager': 'bottomFm',
         'tree': 'tree',
         'dialog_element': 'dialogElement'

@@ -19,7 +19,7 @@
   {
     "id": 2,
     "name": "circle",
-    "description": "circle",
+    "description": "Draw circle with current cursor and radius",
     "iconClazz": "radio_button_unchecked",
     "visible": true,
     "action": {
@@ -36,7 +36,7 @@
   {
     "id": 3,
     "name": "line",
-    "description": "line",
+    "description": "Draw line with current cursor",
     "iconClazz": "trending_flat",
     "visible": true,
     "action": {
@@ -71,7 +71,7 @@
   {
     "id": 6,
     "name": "remove",
-    "description": "remove",
+    "description": "Remove selected object",
     "iconClazz": "close",
     "visible": true,
     "action": {
@@ -86,6 +86,22 @@
   },
   {
     "id": 7,
+    "name": "removeAll",
+    "description": "Remove all selected objects",
+    "iconClazz": "close",
+    "visible": true,
+    "action": {
+      "type": "drawing",
+      "name": "editorAPI",
+      "method": "remove",
+      "params": [
+        "OBJECT_NAMES"
+      ]
+    },
+    "preview": "/preview/remove.js"
+  },
+  {
+    "id": 8,
     "name": "setElements",
     "description": "setElements",
     "iconClazz": "blur_on",
@@ -103,7 +119,7 @@
     "preview": "/preview/remove.js"
   },
   {
-    "id": 8,
+    "id": 9,
     "name": "setMaterial",
     "description": "setMaterial",
     "iconClazz": "widgets",

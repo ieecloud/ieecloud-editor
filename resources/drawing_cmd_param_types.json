@@ -21,6 +21,13 @@
     "mode": "3d_geometry"
   },
   {
+    "id": "OBJECT_NAMES",
+    "name": "objectNames",
+    "description": "Object Names",
+    "tools": ["list-of-objects"],
+    "mode": "3d_geometry"
+  },
+  {
     "id": "SHAPE_NAME",
     "name": "shapeName",
     "description": "Shape Name",

@@ -70,6 +70,8 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 $scope.cmdRunning = false;
                 $scope.currentCmd = null;
 
+                $scope.selectedNodes = [];
+
                 $scope.settings = {
                     showTree: false,
                     showCmd: true,
@@ -134,6 +136,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                     $scope.cmdRunning = false;
                     $scope.viewerControl.showRuler(false);
                     $scope.currentCmd = null;
+                    $scope.selectedNodes = [];
                     $scope.setMode('3d_geometry');
                 }
             };
@@ -144,8 +147,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 }
                 actionsRetryQueue.cancelAll();
                 $scope.currentCmd = cmd;
-                $scope.consoleControl.setCmd(cmd);
-
+                $scope.consoleControl.setCmd($scope.currentCmd);
                 $scope.params = angular.copy($scope.currentCmd.action.params);
                 $scope.cmdRunning = true;
                 processCommand();

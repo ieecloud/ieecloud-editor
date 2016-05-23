@@ -106,7 +106,7 @@ angular.module('ieecloud-editor.console.console-directive', [])
                 // public methods
                 $scope.internalControl.setCmd = function (cmd) {
                     if (cmd) {
-                        var cmdNameStart = 'd.' + cmd.name + "(";
+                        var cmdNameStart = 'd.' + cmd.action.method + "(";
                         controller.promptText(cmdNameStart);
                     }
                 };
