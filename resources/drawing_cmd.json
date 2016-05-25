@@ -42,7 +42,7 @@
     "action": {
       "type": "drawing",
       "name": "editorAPI",
-      "method": "circle",
+      "method": "line",
       "params": [
         "COORDINATE",
         "COORDINATE"

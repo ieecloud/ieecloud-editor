@@ -169,7 +169,6 @@ angular.module('ieecloud-editor.console', [])
                                     var resp = data.logs[0].message;
                                     var json = resp.substring(resp.indexOf('"') + 1, resp.lastIndexOf('"'));
                                     console.log(broadcast);
-                                    console.log(json);
 
                                     $injector.get('$rootScope').$broadcast(broadcast, JSON.parse(json));
 

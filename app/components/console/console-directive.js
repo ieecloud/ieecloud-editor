@@ -103,6 +103,10 @@ angular.module('ieecloud-editor.console.console-directive', [])
 
                 init();
 
+                $scope.internalControl.clearCmd = function () {
+                    controller.promptText("");
+                };
+
                 // public methods
                 $scope.internalControl.setCmd = function (cmd) {
                     if (cmd) {

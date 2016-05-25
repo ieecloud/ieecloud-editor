@@ -134,10 +134,8 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 } else {
                     $scope.consoleControl.execCurrentCmd();
                     $scope.cmdRunning = false;
-                    $scope.viewerControl.showRuler(false);
                     $scope.currentCmd = null;
                     $scope.selectedNodes = [];
-                    $scope.setMode('3d_geometry');
                 }
             };
 
@@ -153,16 +151,27 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 processCommand();
             };
 
+            $scope.cancelCmd = function () {
+                actionsRetryQueue.cancelAll();
+                $scope.consoleControl.clearCmd();
+                $scope.cmdRunning = false;
+                $scope.currentCmd = null;
+                $scope.viewerControl.showRuler(false);
+                $scope.setMode('3d_geometry');
+            };
+
             $scope.editMode = function () {
                 $scope.readOnly = false;
                 $scope.consoleControl.startSession();
             };
 
             $scope.saveModel = function () {
+                $scope.cancelCmd();
                 $scope.consoleControl.execCmd(cmdMapping.get('SAVE'));
             };
 
             $scope.meshModel = function () {
+                $scope.cancelCmd();
                 $scope.consoleControl.execCmd(cmdMapping.get('MESH_SIZE', 0.5));
                 $scope.consoleControl.execCmd(cmdMapping.get('MESH'));
             };

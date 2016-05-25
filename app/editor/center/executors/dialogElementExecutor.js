@@ -14,7 +14,8 @@ angular.module('ieecloud-editor.editor.viewer').controller('dialogElementExecuto
                     point: result
                 });
             }, function() {
-                $log.info('Modal dismissed at: ' + new Date());
+                $scope.cancelCmd();
+
             });
         };
     }])

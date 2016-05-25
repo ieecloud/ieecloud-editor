@@ -87,6 +87,9 @@ angular.module('ieecloud-editor', [
         $httpProvider.defaults.withCredentials = true;
 
         $mdThemingProvider.theme('default');
+        $mdThemingProvider.theme("success-toast");
+        $mdThemingProvider.theme("error-toast");
+        $mdThemingProvider.theme("warning-toast");
         consoleApiProvider.setBaseUrl("https://egrfs.ieecloud.com");
 
         $urlRouterProvider.otherwise('/editor');

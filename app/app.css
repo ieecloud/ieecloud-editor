@@ -370,6 +370,26 @@ code {
     cursor: pointer;
 }
 
+
+
+
+
+
+md-toast.md-error-toast-theme div.md-toast-content{
+    color: white !important;
+    background-color: red !important;
+}
+
+md-toast.md-warning-toast-theme div.md-toast-content{
+    color: black !important;
+    background-color: lightyellow !important;
+}
+
+md-toast.md-success-toast-theme div.md-toast-content{
+    color: white !important;
+    background-color: green !important;
+}
+
 /*!* Layout Styles *!*/
 
 /*#wrapper {*/

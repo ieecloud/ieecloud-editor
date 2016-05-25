@@ -1,4 +1,5 @@
-angular.module('ieecloud-editor.editor.viewer').controller('dialogDoubleExecutor', ['$scope', '$uibModal', '$log', '$mdDialog', function ($scope, $uibModal, $log, $mdDialog) {
+angular.module('ieecloud-editor.editor.viewer').controller('dialogDoubleExecutor', ['$scope', '$uibModal', '$log', '$mdDialog',
+    function ($scope, $uibModal, $log, $mdDialog) {
     $scope.execute = function () {
         var confirm = $mdDialog.prompt()
             .title('What would you dimension?')
@@ -14,7 +15,7 @@ angular.module('ieecloud-editor.editor.viewer').controller('dialogDoubleExecutor
                 point: result
             });
         }, function() {
-            $log.info('Modal dismissed at: ' + new Date());
+            $scope.cancelCmd();
         });
     };
 }]);
