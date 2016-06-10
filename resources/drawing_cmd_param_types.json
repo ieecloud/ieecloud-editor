@@ -10,7 +10,7 @@
     "id": "DOUBLE",
     "name": "double",
     "description": "Double",
-    "tools": ["ruler", "dialog_double"],
+    "tools": ["dialog_double"],
     "mode": "3d_point"
   },
   {
