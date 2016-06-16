@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('ieecloud-editor', [
         'ngMaterial',
+        'cfp.hotkeys',
         'ieecloud-editor.security',
         'ieecloud-editor.filters',
         'ieecloud-editor.services',

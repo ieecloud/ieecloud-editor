@@ -59,8 +59,8 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
         });
     }])
 
-    .controller('EditorCtrl', ['$scope', '$rootScope', 'cmdMapping', 'IE_EVENTS', 'actionsRetryQueue','commonExecutor', 'cmdParamTypes', '$mdSidenav', '$log',
-        function ($scope, $rootScope, cmdMapping, IE_EVENTS, actionsRetryQueue , commonExecutor, cmdParamTypes, $mdSidenav, $log) {
+    .controller('EditorCtrl', ['$scope', '$rootScope', 'cmdMapping', 'IE_EVENTS', 'actionsRetryQueue','commonExecutor', 'cmdParamTypes', '$mdSidenav', '$log', 'hotkeys',
+        function ($scope, $rootScope, cmdMapping, IE_EVENTS, actionsRetryQueue , commonExecutor, cmdParamTypes, $mdSidenav, $log, hotkeys) {
 
             var init = function () {
                 $scope.paramTypes = cmdParamTypes;
@@ -80,6 +80,34 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                     showHProtractor: false,
                     mode : '3d_geometry'
                 };
+
+
+                hotkeys.add({
+                    combo: 'ctrl+c',
+                    description: 'Show ruler',
+                    callback: function() {
+                        $scope.addRuler();
+                    }
+                });
+
+                hotkeys.add({
+                    combo: 'ctrl+z',
+                    description: 'Show Protractor V',
+                    callback: function() {
+                        $scope.showVProtractor();
+                    }
+                });
+
+
+                hotkeys.add({
+                    combo: 'ctrl+x',
+                    description: 'Show Protractor H',
+                    callback: function() {
+                        $scope.showHProtractor();
+                    }
+                });
+
+
 
             };
 

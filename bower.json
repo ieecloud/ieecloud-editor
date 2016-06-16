@@ -21,7 +21,8 @@
     "angular-ui-tree": "~2.9.0",
     "ieecloud-viewer.js": "c8e6c8c",
     "ieecloud-fm": "1b9f8a9",
-    "lodash": "~4.0.0"
+    "lodash": "~4.0.0",
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.7.0"
   },
   "resolutions": {
     "angular": "~1.4.9"

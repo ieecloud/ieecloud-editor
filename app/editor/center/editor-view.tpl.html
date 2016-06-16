@@ -131,19 +131,19 @@
                         <md-menu-item>
                             <md-button ng-click="toggleRuler()" ng-disabled="!cmdRunning">
                                 <md-icon class="material-icons">linear_scale</md-icon>
-                                Ruler
+                                Ruler  <span class="md-alt-text"> {{ 'M-C' | keyboardShortcut }}</span>
                             </md-button>
                         </md-menu-item>
                         <md-menu-item>
                             <md-button ng-click="toggleVProtractor()" ng-disabled="!cmdRunning">
                                 <md-icon class="material-icons">pie_chart_outlined</md-icon>
-                                Protractor V
+                                Protractor V <span class="md-alt-text"> {{ 'M-Z' | keyboardShortcut }}</span>
                             </md-button>
                         </md-menu-item>
                         <md-menu-item>
                             <md-button ng-click="toggleHProtractor()" ng-disabled="!cmdRunning">
                                 <md-icon class="material-icons">remove_circle_outline</md-icon>
-                                Protractor H
+                                Protractor H <span class="md-alt-text"> {{ 'M-X' | keyboardShortcut }}</span>
                             </md-button>
                         </md-menu-item>
                     </md-menu-content>
