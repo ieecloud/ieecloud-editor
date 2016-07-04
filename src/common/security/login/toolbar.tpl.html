@@ -1,0 +1,12 @@
+<div layout="row" style="padding-top: 8px;   padding-bottom: 8px; padding-right: 320px;">
+    <span style="padding-top: 13px;">{{currentUser.username}} </span>
+
+    <div class="md-list-item-text" layout="row">
+        <md-button ng-click="logout()" ng-show="isAuthenticated()">
+            <md-icon class="material-icons"><i class="material-icons">exit_to_app</i></md-icon>
+        </md-button>
+        <md-button ng-click="login()" ng-hide="isAuthenticated()">
+            Log in
+        </md-button>
+    </div>
+</div>

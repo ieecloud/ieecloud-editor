@@ -4,14 +4,14 @@ module.exports = function(config){
     basePath : './',
 
     files : [
-      'app/bower_components/angular/angular.js',
-      'app/bower_components/angular-ui-router/release/angular-ui-router.js',
-      'app/bower_components/angular-cookies/angular-cookies.js',
+      'bower_components/angular/angular.js',
+      'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/angular-cookies/angular-cookies.js',
       'app/bower_components/jquery/dist/jquery.min.js',
-      'app/components/viewer/viewer-directive.js',
-      'app/bower_components/angular-mocks/angular-mocks.js',
-      'app/components/**/*.js',
-      'app/editor*/**/*.js'
+      'components/viewer/viewer-directive.js',
+      'bower_components/angular-mocks/angular-mocks.js',
+      'components/**/*.js',
+      'editor*/**/*.js'
     ],
 
     autoWatch : true,
