@@ -66,6 +66,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 $scope.paramTypes = cmdParamTypes;
                 $scope.viewerControl = {};
                 $scope.consoleControl = {};
+                $scope.cmdInfoControl = {};
                 $scope.readOnly = true;
                 $scope.cmdRunning = false;
                 $scope.currentCmd = null;
@@ -153,6 +154,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 $scope.cmdType = _.find($scope.paramTypes, {'id': param});
                 var possibleTools = $scope.cmdType.tools;
                 $scope.setMode($scope.cmdType.mode);
+                $scope.cmdInfoControl.setCmdParamType($scope.cmdType);
                 commonExecutor.execute($scope, possibleTools);
             };
 
@@ -163,6 +165,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                     $scope.consoleControl.execCurrentCmd();
                     $scope.cmdRunning = false;
                     $scope.currentCmd = null;
+                    $scope.cmdInfoControl.hidePanel();
                     $scope.selectedNodes = [];
                 }
             };
@@ -174,6 +177,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 actionsRetryQueue.cancelAll();
                 $scope.currentCmd = cmd;
                 $scope.consoleControl.setCmd($scope.currentCmd);
+                $scope.cmdInfoControl.setCmd($scope.currentCmd);
                 $scope.params = angular.copy($scope.currentCmd.action.params);
                 $scope.cmdRunning = true;
                 processCommand();

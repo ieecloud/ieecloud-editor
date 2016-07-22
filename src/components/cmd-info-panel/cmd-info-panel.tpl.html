@@ -1,0 +1,34 @@
+<div class="cmd-info-top"  ng-show="cmdInfoPanelCtrl.visible">
+  <div class="cmd-info-panel" flex  layout="column">
+    <div class="header-wrapper">
+      <div class="header" flex layout="row" layout-align="space-between" layout-padding>
+        <div>Command Information (<span ng-bind="cmdInfoPanelCtrl.cmd.name"></span>)</div>
+        <span>
+           <md-icon  class="material-icons" ng-click="cmdInfoPanelCtrl.togglePanel()" title="{{cmdInfoPanelCtrl.collapsed ? 'Expand' : 'Collapse'}}" style="cursor:pointer;">
+             remove
+           </md-icon>
+        </span>
+      </div>
+    </div>
+    <div class="research-panel-content" ng-show="!cmdInfoPanelCtrl.collapsed">
+      <section flex  layout="column" layout-padding>
+        <div flex layout="row" >
+          <span style="color: rgba(0,0,0,0.54);font-weight: bold;">Cmd Description: </span>
+          <span style="padding-left:10px;" ng-bind="cmdInfoPanelCtrl.cmd.description"></span>
+        </div>
+        <div flex layout="row">
+          <span style="color: rgba(0,0,0,0.54);font-weight: bold;">Parameter ID: </span>
+          <span style="padding-left:10px;" ng-bind="cmdInfoPanelCtrl.cmdParam.id"></span>
+        </div>
+        <div flex layout="row">
+          <span style="color: rgba(0,0,0,0.54);font-weight: bold;">Parameter Description: </span>
+          <span style="padding-left:10px;" ng-bind="cmdInfoPanelCtrl.cmdParam.description"></span>
+        </div>
+        <div flex layout="row">
+          <md-button class="md-raised md-warn" ng-click="cmdInfoPanelCtrl.cancelCommand()">Cancel Command</md-button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>

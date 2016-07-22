@@ -12,6 +12,7 @@ angular.module('ieecloud-editor', [
         'ieecloud-editor.viewer.viewer-directive',
         'ieecloud-editor.console',
         'ieecloud-editor.console.console-directive',
+        'ieecloud-editor.cmd-info-directive',
         'ngCookies',
         'ui.router',
         'ui.tree',

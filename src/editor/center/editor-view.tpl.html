@@ -32,37 +32,6 @@
 </script>
 
 
-<!--<md-toolbar layout="row" class="md-whiteframe-z1 editor-content-toolbar">-->
-    <!--<section layout="row" layout-sm="column" layout-align="center center" layout-wrap ng-show="readOnly">-->
-        <!--<md-button class="md-fab md-primary md-mini" ng-click="editMode()">-->
-            <!--<md-icon  class="material-icons" >-->
-                <!--border_color-->
-            <!--</md-icon>-->
-        <!--</md-button>-->
-    <!--</section>-->
-
-
-    <!--<section layout="row" layout-sm="column" layout-align="center center" layout-wrap ng-show="!readOnly" style="padding-left: 320px;">-->
-        <!--<md-button class="md-raised" ng-click="toggleTree()">Toggle Tree</md-button>-->
-        <!--<md-button class="md-raised" ng-click="toggleCmd()">Toggle Right</md-button>-->
-        <!--<md-button class="md-raised" ng-click="addRuler()">Ruler</md-button>-->
-        <!--<md-button class="md-raised" ng-click="showVProtractor()">Protractor V</md-button>-->
-        <!--<md-button class="md-raised" ng-click="showHProtractor()">Protractor H</md-button>-->
-        <!--<md-button class="md-raised" ng-click="meshModel()">Mesh</md-button>-->
-        <!--<md-button class="md-raised" ng-click="saveModel()">Save</md-button>-->
-        <!--<md-select class="mode-select" ng-if="!readOnly" ng-model="currentMode" ng-change="setMode(currentMode)">-->
-            <!--<md-option ng-repeat="mode in modes" value="{{mode.key}}">-->
-                <!--{{mode.label}}-->
-            <!--</md-option>-->
-        <!--</md-select>-->
-
-    <!--</section>-->
-    <!--<span flex></span>-->
-    <!--<login-toolbar></login-toolbar>-->
-
-<!--</md-toolbar>-->
-
-
 <md-toolbar class="md-menu-toolbar">
     <div layout="row">
         <div ng-show="readOnly">
@@ -208,4 +177,5 @@
          on-end-render="endRender()"
          on-select-3d-point="pointSelected(point)">
     </div>
+    <cmd-info-panel control="cmdInfoControl" on-cancel-cmd="cancelCmd()"></cmd-info-panel>
 </md-content>
