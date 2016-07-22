@@ -190,6 +190,7 @@ angular.module('ieecloud-editor.editor', ['ieecloud-editor.editor.tree', 'ieeclo
                 $scope.currentCmd = null;
                 $scope.viewerControl.showRuler(false);
                 $scope.setMode('3d_geometry');
+                $scope.cmdInfoControl.hidePanel();
             };
 
             $scope.editMode = function () {
