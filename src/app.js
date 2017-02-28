@@ -61,8 +61,8 @@ angular.module('ieecloud-editor', [
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
 
         fileManagerConfigProvider.set({
-            listUrl: 'https://store-grf.ieecloud.com/api/jsonws/fm/listUrl',
-            siteListUrl: 'https://store-grf.ieecloud.com/api/jsonws/site/list',
+            listUrl: 'http://store-grf.ieecloud.com/api/jsonws/fm/listUrl',
+            siteListUrl: 'http://store-grf.ieecloud.com/api/jsonws/site/list',
             allowedActions: {
                 createFolder: false,
                 upload: false,
@@ -91,7 +91,7 @@ angular.module('ieecloud-editor', [
         $mdThemingProvider.theme("success-toast");
         $mdThemingProvider.theme("error-toast");
         $mdThemingProvider.theme("warning-toast");
-        consoleApiProvider.setBaseUrl("https://egrfs.ieecloud.com");
+        consoleApiProvider.setBaseUrl("http://egrfs.ieecloud.com");
 
         $urlRouterProvider.otherwise('/editor');
     }).run(function ($rootScope, security) {

@@ -3,11 +3,11 @@ angular.module('ieecloud-editor.utils', [])
     .factory('urlHelper', [function() {
         return {
             getApiUrl: function(url) {
-                return 'https://store-grf.ieecloud.com' + url;
+                return 'http://store-grf.ieecloud.com' + url;
             },
 
             getStoreUrl: function(url) {
-                return 'https://store-grf.ieecloud.com' + url;
+                return 'http://store-grf.ieecloud.com' + url;
             }
         };
     }]);
